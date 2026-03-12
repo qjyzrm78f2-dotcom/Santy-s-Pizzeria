@@ -14,7 +14,6 @@ body{
 margin:0;
 font-family:Arial;
 background:#f4e6d8;
-padding-bottom:300px;
 }
 
 header{
@@ -30,12 +29,36 @@ margin:auto;
 padding:20px;
 }
 
+.menu-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:20px;
+}
+
 .card{
 background:white;
-border-radius:12px;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-body{
 padding:15px;
-margin-bottom:15px;
-box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.card h3{
+margin:0;
+}
+
+.price{
+margin:8px 0;
+font-weight:bold;
 }
 
 button{
@@ -45,7 +68,11 @@ padding:10px 14px;
 border-radius:8px;
 color:white;
 cursor:pointer;
-margin:4px;
+margin:3px;
+}
+
+button:hover{
+background:#e56700;
 }
 
 .cart{
@@ -61,7 +88,7 @@ padding:15px;
 .cart-item{
 display:flex;
 justify-content:space-between;
-margin:6px 0;
+margin:5px 0;
 }
 
 .remove{
@@ -81,7 +108,7 @@ border:none;
 border-radius:8px;
 color:white;
 font-size:16px;
-margin-top:8px;
+margin-top:10px;
 }
 
 .pay-btn{
@@ -103,14 +130,6 @@ border-radius:6px;
 border:1px solid #ccc;
 }
 
-.codigo{
-background:#ffe8a3;
-padding:10px;
-border-radius:8px;
-margin-bottom:10px;
-font-weight:bold;
-}
-
 </style>
 
 </head>
@@ -119,90 +138,79 @@ font-weight:bold;
 
 <header>
 
-<h1>🍕 SANTY'S PIZZERÍA</h1>
+<h1>🍕 Santy's Pizzería</h1>
 <p>Hecha a mano · Calidad superior</p>
 
 </header>
 
 <div class="container">
 
-<div id="codigoPedido" class="codigo">
-Código de pedido: ---
-</div>
-
-<h2>📦 Datos del cliente</h2>
+<h2>Datos del cliente</h2>
 
 <input id="nombre" placeholder="Nombre">
 <input id="telefono" placeholder="Teléfono">
 <input id="direccion" placeholder="Dirección">
 
-<h2>🔥 PIZZAS</h2>
+<h2>🍕 Pizzas</h2>
+
+<div class="menu-grid">
 
 <div class="card">
-
-<h3>Pepperoni</h3>
-
-<button onclick="add('Pepperoni 35cm',179)">35cm $179</button>
-<button onclick="add('Pepperoni 40cm',199)">40cm $199</button>
-<button onclick="add('Pepperoni 45cm',229)">45cm $229</button>
-
-</div>
-
-<div class="card">
-
-<h3>Jamón</h3>
-
-<button onclick="add('Jamón 35cm',179)">35cm $179</button>
-<button onclick="add('Jamón 40cm',199)">40cm $199</button>
-<button onclick="add('Jamón 45cm',229)">45cm $229</button>
-
-</div>
-
-<div class="card">
-
-<h3>Hawaiana</h3>
-
-<button onclick="add('Hawaiana 35cm',189)">35cm $189</button>
-<button onclick="add('Hawaiana 40cm',209)">40cm $209</button>
-<button onclick="add('Hawaiana 45cm',239)">45cm $239</button>
-
-</div>
-
-<div class="card">
-
+<img src="mexicana.jpg">
+<div class="card-body">
 <h3>Mexicana</h3>
-
-<button onclick="add('Mexicana 35cm',189)">35cm $189</button>
-<button onclick="add('Mexicana 40cm',209)">40cm $209</button>
-<button onclick="add('Mexicana 45cm',239)">45cm $239</button>
-
+<div class="price">$189 | $209 | $239</div>
+<button onclick="add('Mexicana 35cm',189)">35cm</button>
+<button onclick="add('Mexicana 40cm',209)">40cm</button>
+<button onclick="add('Mexicana 45cm',239)">45cm</button>
+</div>
 </div>
 
 <div class="card">
-
-<h3>3 Carnes</h3>
-
-<button onclick="add('3 Carnes 35cm',199)">35cm $199</button>
-<button onclick="add('3 Carnes 40cm',219)">40cm $219</button>
-<button onclick="add('3 Carnes 45cm',249)">45cm $249</button>
-
+<img src="pepperoni.jpg">
+<div class="card-body">
+<h3>Pepperoni</h3>
+<div class="price">$179 | $199 | $229</div>
+<button onclick="add('Pepperoni 35cm',179)">35cm</button>
+<button onclick="add('Pepperoni 40cm',199)">40cm</button>
+<button onclick="add('Pepperoni 45cm',229)">45cm</button>
+</div>
 </div>
 
-<h2>🍗 ALITAS</h2>
+<div class="card">
+<img src="hawaiana.jpg">
+<div class="card-body">
+<h3>Hawaiana</h3>
+<div class="price">$189 | $209 | $239</div>
+<button onclick="add('Hawaiana 35cm',189)">35cm</button>
+<button onclick="add('Hawaiana 40cm',209)">40cm</button>
+<button onclick="add('Hawaiana 45cm',239)">45cm</button>
+</div>
+</div>
 
-<button onclick="add('Alitas 6 piezas',99)">6 piezas $99</button>
-<button onclick="add('Alitas 10 piezas',149)">10 piezas $149</button>
+<div class="card">
+<img src="carnes.jpg">
+<div class="card-body">
+<h3>3 Carnes</h3>
+<div class="price">$199 | $219 | $249</div>
+<button onclick="add('3 Carnes 35cm',199)">35cm</button>
+<button onclick="add('3 Carnes 40cm',219)">40cm</button>
+<button onclick="add('3 Carnes 45cm',249)">45cm</button>
+</div>
+</div>
 
-<h2>🥔 PAPAS GAJO</h2>
+<div class="card">
+<img src="jamon.jpg">
+<div class="card-body">
+<h3>Jamón</h3>
+<div class="price">$179 | $199 | $229</div>
+<button onclick="add('Jamón 35cm',179)">35cm</button>
+<button onclick="add('Jamón 40cm',199)">40cm</button>
+<button onclick="add('Jamón 45cm',229)">45cm</button>
+</div>
+</div>
 
-<button onclick="add('Papas gajo 220g',79)">220g $79</button>
-<button onclick="add('Papas gajo 400g',99)">400g $99</button>
-
-<h2>🥤 REFRESCOS</h2>
-
-<button onclick="add('Refresco 400ml',20)">400ml $20</button>
-<button onclick="add('Refresco 600ml',28)">600ml $28</button>
-<button onclick="add('Refresco 2L',45)">2L $45</button>
+</div>
 
 </div>
 
@@ -226,20 +234,6 @@ Pagar con tarjeta
 
 let cart=[]
 let total=0
-let codigo=""
-
-function generarCodigo(){
-
-let num=Math.floor(1000+Math.random()*9000)
-
-codigo="SP-"+num
-
-document.getElementById("codigoPedido").innerHTML=
-"Código de pedido: "+codigo
-
-}
-
-generarCodigo()
 
 function add(producto,precio){
 
@@ -279,44 +273,9 @@ document.getElementById("total").innerHTML="Total $"+total
 
 }
 
-function validar(){
-
-let nombre=document.getElementById("nombre").value
-let telefono=document.getElementById("telefono").value
-let direccion=document.getElementById("direccion").value
-
-if(nombre==""||telefono==""||direccion==""){
-
-alert("Completa los datos del cliente")
-return false
-
-}
-
-if(cart.length==0){
-
-alert("Agrega productos al carrito")
-return false
-
-}
-
-return true
-
-}
-
 function pedido(){
 
-if(!validar()) return
-
-let nombre=document.getElementById("nombre").value
-let telefono=document.getElementById("telefono").value
-let direccion=document.getElementById("direccion").value
-
-let mensaje="Pedido Santy's Pizzería%0A"
-mensaje+="Código: "+codigo+"%0A%0A"
-
-mensaje+="Cliente: "+nombre+"%0A"
-mensaje+="Teléfono: "+telefono+"%0A"
-mensaje+="Dirección: "+direccion+"%0A%0A"
+let mensaje="Pedido Santy's Pizzería%0A%0A"
 
 cart.forEach(item=>{
 mensaje+=item.producto+" - $"+item.precio+"%0A"
@@ -329,10 +288,6 @@ window.open("https://wa.me/526693123366?text="+mensaje)
 }
 
 function pagar(){
-
-if(!validar()) return
-
-alert("Tu código de pedido es: "+codigo)
 
 window.open("https://link.mercadopago.com.mx/santyspizzeria")
 
