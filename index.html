@@ -273,6 +273,8 @@ Pagar con tarjeta
 let cart=[]
 let total=0
 
+let codigo="SP-"+Math.floor(1000+Math.random()*9000)
+
 function add(producto,precio){
 
 cart.push({producto,precio})
@@ -321,7 +323,9 @@ document.getElementById("total").innerHTML="Total $"+total
 
 function pedido(){
 
-let mensaje="Pedido Santy's Pizzería%0A%0A"
+let mensaje="Pedido Santy's Pizzería%0A"
+
+mensaje+="Código: "+codigo+"%0A%0A"
 
 cart.forEach(item=>{
 mensaje+=item.producto+" - $"+item.precio+"%0A"
@@ -335,7 +339,20 @@ window.open("https://wa.me/526693123366?text="+mensaje)
 
 function pagar(){
 
-alert("Total a pagar: $"+total)
+if(cart.length==0){
+
+alert("Agrega productos al carrito")
+return
+
+}
+
+let mensaje="Código de pedido: "+codigo+
+
+"\n\nCopia este código en tu referencia de pago."+ 
+
+"\n\nTotal a pagar: $"+total
+
+alert(mensaje)
 
 window.open("https://link.mercadopago.com.mx/santyspizzeria")
 
