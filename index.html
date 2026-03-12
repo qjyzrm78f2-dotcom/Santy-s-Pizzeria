@@ -15,7 +15,7 @@ margin:0;
 font-family:Arial, Helvetica, sans-serif;
 background:#f4e6d8;
 color:#222;
-padding-bottom:260px;
+padding-bottom:300px;
 }
 
 header{
@@ -34,19 +34,9 @@ padding:20px;
 .card{
 background:white;
 border-radius:12px;
-overflow:hidden;
-box-shadow:0 4px 10px rgba(0,0,0,0.15);
-margin-bottom:15px;
-}
-
-.card img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
-
-.card-body{
 padding:15px;
+margin-bottom:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
 
 button{
@@ -97,6 +87,19 @@ border-radius:8px;
 color:white;
 font-size:16px;
 cursor:pointer;
+margin-top:8px;
+}
+
+.pay-btn{
+background:#009ee3;
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:8px;
 }
 
 input{
@@ -133,48 +136,53 @@ border:1px solid #ccc;
 <h2>🔥 PIZZAS</h2>
 
 <div class="card">
-<div class="card-body">
+
 <h3>Pepperoni</h3>
+
 <button onclick="add('Pepperoni 35cm',179)">35cm $179</button>
 <button onclick="add('Pepperoni 40cm',199)">40cm $199</button>
 <button onclick="add('Pepperoni 45cm',229)">45cm $229</button>
-</div>
+
 </div>
 
 <div class="card">
-<div class="card-body">
+
 <h3>Jamón</h3>
+
 <button onclick="add('Jamón 35cm',179)">35cm $179</button>
 <button onclick="add('Jamón 40cm',199)">40cm $199</button>
 <button onclick="add('Jamón 45cm',229)">45cm $229</button>
-</div>
+
 </div>
 
 <div class="card">
-<div class="card-body">
+
 <h3>Hawaiana</h3>
+
 <button onclick="add('Hawaiana 35cm',189)">35cm $189</button>
 <button onclick="add('Hawaiana 40cm',209)">40cm $209</button>
 <button onclick="add('Hawaiana 45cm',239)">45cm $239</button>
-</div>
+
 </div>
 
 <div class="card">
-<div class="card-body">
+
 <h3>Mexicana</h3>
+
 <button onclick="add('Mexicana 35cm',189)">35cm $189</button>
 <button onclick="add('Mexicana 40cm',209)">40cm $209</button>
 <button onclick="add('Mexicana 45cm',239)">45cm $239</button>
-</div>
+
 </div>
 
 <div class="card">
-<div class="card-body">
+
 <h3>3 Carnes</h3>
+
 <button onclick="add('3 Carnes 35cm',199)">35cm $199</button>
 <button onclick="add('3 Carnes 40cm',219)">40cm $219</button>
 <button onclick="add('3 Carnes 45cm',249)">45cm $249</button>
-</div>
+
 </div>
 
 <h2>🍗 ALITAS</h2>
@@ -203,6 +211,10 @@ border:1px solid #ccc;
 
 <button class="whatsapp-btn" onclick="pedido()">
 Enviar pedido por WhatsApp
+</button>
+
+<button class="pay-btn" onclick="pagar()">
+Pagar con tarjeta
 </button>
 
 </div>
@@ -250,7 +262,7 @@ document.getElementById("total").innerHTML="Total $"+total
 
 }
 
-function pedido(){
+function validar(){
 
 let nombre=document.getElementById("nombre").value
 let telefono=document.getElementById("telefono").value
@@ -259,10 +271,28 @@ let direccion=document.getElementById("direccion").value
 if(nombre==""||telefono==""||direccion==""){
 
 alert("Completa los datos del cliente")
-
-return
+return false
 
 }
+
+if(cart.length==0){
+
+alert("Agrega productos al carrito")
+return false
+
+}
+
+return true
+
+}
+
+function pedido(){
+
+if(!validar()) return
+
+let nombre=document.getElementById("nombre").value
+let telefono=document.getElementById("telefono").value
+let direccion=document.getElementById("direccion").value
 
 let mensaje="Pedido Santy's Pizzería%0A%0A"
 
@@ -277,6 +307,14 @@ mensaje+=item.producto+" - $"+item.precio+"%0A"
 mensaje+="%0ATotal: $"+total
 
 window.open("https://wa.me/526693123366?text="+mensaje)
+
+}
+
+function pagar(){
+
+if(!validar()) return
+
+window.open("https://link.mercadopago.com.mx/santyspizzeria")
 
 }
 
