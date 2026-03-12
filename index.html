@@ -266,6 +266,10 @@ Enviar pedido por WhatsApp
 Pagar con tarjeta
 </button>
 
+<button class="pay-btn" onclick="confirmarPago()">
+Confirmar pago realizado
+</button>
+
 </div>
 
 <script>
@@ -338,6 +342,44 @@ window.open("https://wa.me/526693123366?text="+mensaje)
 }
 
 function pagar(){
+    
+    function confirmarPago(){
+
+if(cart.length==0){
+
+alert("No hay productos en el carrito")
+return
+
+}
+
+let nombre=document.getElementById("nombre").value
+let telefono=document.getElementById("telefono").value
+let direccion=document.getElementById("direccion").value
+
+if(nombre==""||telefono==""||direccion==""){
+
+alert("Completa los datos del cliente")
+return
+
+}
+
+let mensaje="PEDIDO PAGADO Santy's Pizzería%0A"
+
+mensaje+="Código: "+codigo+"%0A%0A"
+
+mensaje+="Cliente: "+nombre+"%0A"
+mensaje+="Teléfono: "+telefono+"%0A"
+mensaje+="Dirección: "+direccion+"%0A%0A"
+
+cart.forEach(item=>{
+mensaje+=item.producto+" - $"+item.precio+"%0A"
+})
+
+mensaje+="%0ATotal pagado: $"+total
+
+window.open("https://wa.me/526693123366?text="+mensaje)
+
+}
 
 if(cart.length==0){
 
