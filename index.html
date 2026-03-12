@@ -15,6 +15,7 @@ margin:0;
 font-family:Arial, Helvetica, sans-serif;
 background:#f4e6d8;
 color:#222;
+padding-bottom:200px;
 }
 
 header{
@@ -29,62 +30,81 @@ margin:0;
 font-size:32px;
 }
 
-header p{
-margin-top:8px;
-font-size:16px;
-}
-
 .container{
 max-width:700px;
 margin:auto;
 padding:20px;
 }
 
-.section{
+.card{
 background:white;
 border-radius:12px;
-padding:20px;
-margin-bottom:20px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+overflow:hidden;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+margin-bottom:15px;
 }
 
-.section h2{
-margin-top:0;
-color:#b22222;
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
 }
 
-.menu-item{
+.card-body{
+padding:15px;
+}
+
+.price{
+font-weight:bold;
+margin-bottom:10px;
+}
+
+button{
+background:#ff7a00;
+border:none;
+padding:10px 14px;
+border-radius:8px;
+color:white;
+cursor:pointer;
+margin:4px;
+}
+
+button:hover{
+background:#e56700;
+}
+
+.cart{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#222;
+color:white;
+padding:15px;
+}
+
+.cart-items{
+max-height:120px;
+overflow:auto;
+margin-bottom:10px;
+}
+
+.cart-item{
 display:flex;
 justify-content:space-between;
-margin:8px 0;
-font-size:16px;
-}
-
-.sauces{
-margin-top:10px;
-padding-left:15px;
-}
-
-.whatsapp{
-background:#25D366;
-color:white;
-text-align:center;
-padding:20px;
-border-radius:12px;
-font-size:18px;
-margin-top:20px;
-}
-
-.whatsapp a{
-color:white;
-text-decoration:none;
-font-weight:bold;
-}
-
-footer{
-text-align:center;
-padding:20px;
 font-size:14px;
+margin:5px 0;
+}
+
+.whatsapp-btn{
+background:#25D366;
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+color:white;
+font-size:16px;
+cursor:pointer;
 }
 
 </style>
@@ -95,127 +115,151 @@ font-size:14px;
 
 <header>
 
-<h1>🍕 SANTY’S PIZZERÍA</h1>
+<h1>🍕 SANTY'S PIZZERÍA</h1>
 <p>Hecha a mano · Calidad superior</p>
 
 </header>
 
 <div class="container">
 
-<div class="section">
-
 <h2>🔥 PIZZAS</h2>
 
-<p><strong>📏 Tamaños:</strong> 35 cm | 40 cm | 45 cm</p>
-
-<div class="menu-item">
-<span>🍕 Pepperoni</span>
-<span>$179 | $199 | $229</span>
+<div class="card">
+<img src="pepperoni.jpg">
+<div class="card-body">
+<h3>Pepperoni</h3>
+<p class="price">$179 | $199 | $229</p>
+<button onclick="add('Pepperoni 35cm',179)">35cm</button>
+<button onclick="add('Pepperoni 40cm',199)">40cm</button>
+<button onclick="add('Pepperoni 45cm',229)">45cm</button>
+</div>
 </div>
 
-<div class="menu-item">
-<span>🍕 Jamón</span>
-<span>$179 | $199 | $229</span>
+<div class="card">
+<img src="jamon.jpg">
+<div class="card-body">
+<h3>Jamón</h3>
+<p class="price">$179 | $199 | $229</p>
+<button onclick="add('Jamón 35cm',179)">35cm</button>
+<button onclick="add('Jamón 40cm',199)">40cm</button>
+<button onclick="add('Jamón 45cm',229)">45cm</button>
+</div>
 </div>
 
-<div class="menu-item">
-<span>🍍 Hawaiana</span>
-<span>$189 | $209 | $239</span>
+<div class="card">
+<img src="hawaiana.jpg">
+<div class="card-body">
+<h3>Hawaiana</h3>
+<p class="price">$189 | $209 | $239</p>
+<button onclick="add('Hawaiana 35cm',189)">35cm</button>
+<button onclick="add('Hawaiana 40cm',209)">40cm</button>
+<button onclick="add('Hawaiana 45cm',239)">45cm</button>
+</div>
 </div>
 
-<div class="menu-item">
-<span>🌶 Mexicana</span>
-<span>$189 | $209 | $239</span>
+<div class="card">
+<img src="mexicana.jpg">
+<div class="card-body">
+<h3>Mexicana</h3>
+<p class="price">$189 | $209 | $239</p>
+<button onclick="add('Mexicana 35cm',189)">35cm</button>
+<button onclick="add('Mexicana 40cm',209)">40cm</button>
+<button onclick="add('Mexicana 45cm',239)">45cm</button>
+</div>
 </div>
 
-<div class="menu-item">
-<span>🥩 3 Carnes</span>
-<span>$199 | $219 | $249</span>
+<div class="card">
+<img src="carnes.jpg">
+<div class="card-body">
+<h3>3 Carnes</h3>
+<p class="price">$199 | $219 | $249</p>
+<button onclick="add('3 Carnes 35cm',199)">35cm</button>
+<button onclick="add('3 Carnes 40cm',219)">40cm</button>
+<button onclick="add('3 Carnes 45cm',249)">45cm</button>
 </div>
-
 </div>
-
-<div class="section">
 
 <h2>🍗 ALITAS</h2>
 
-<div class="menu-item">
-<span>6 piezas</span>
-<span>$99</span>
-</div>
-
-<div class="menu-item">
-<span>10 piezas</span>
-<span>$149</span>
-</div>
-
-<p><strong>Salsas:</strong></p>
-
-<div class="sauces">
-<p>🔥 Búfalo</p>
-<p>🌶 Red Hot</p>
-<p>🍯 BBQ</p>
-<p>🌶 BBQ Picante</p>
-<p>🥭 Mango Habanero</p>
-</div>
-
-</div>
-
-<div class="section">
+<button onclick="add('Alitas 6 piezas',99)">6 piezas $99</button>
+<button onclick="add('Alitas 10 piezas',149)">10 piezas $149</button>
 
 <h2>🥔 PAPAS GAJO</h2>
 
-<div class="menu-item">
-<span>220 g</span>
-<span>$79</span>
-</div>
-
-<div class="menu-item">
-<span>400 g</span>
-<span>$99</span>
-</div>
-
-</div>
-
-<div class="section">
+<button onclick="add('Papas gajo 220g',79)">220g $79</button>
+<button onclick="add('Papas gajo 400g',99)">400g $99</button>
 
 <h2>🥤 REFRESCOS</h2>
 
-<div class="menu-item">
-<span>400 ml</span>
-<span>$20</span>
-</div>
-
-<div class="menu-item">
-<span>600 ml</span>
-<span>$28</span>
-</div>
-
-<div class="menu-item">
-<span>2 L</span>
-<span>$45</span>
-</div>
+<button onclick="add('Refresco 400ml',20)">400ml $20</button>
+<button onclick="add('Refresco 600ml',28)">600ml $28</button>
+<button onclick="add('Refresco 2L',45)">2L $45</button>
 
 </div>
 
-<div class="whatsapp">
+<div class="cart">
 
-📲 Haz tu pedido por WhatsApp<br><br>
+<div class="cart-items" id="cartItems"></div>
 
-<a href="https://wa.me/526693123366">
-Ordenar ahora
-</a>
+<div id="total">Total $0</div>
+
+<button class="whatsapp-btn" onclick="pedido()">
+Enviar pedido por WhatsApp
+</button>
 
 </div>
 
+<script>
+
+let cart=[]
+let total=0
+
+function add(producto,precio){
+
+cart.push({producto,precio})
+total+=precio
+
+renderCart()
+
+}
+
+function renderCart(){
+
+let html=""
+
+cart.forEach(item=>{
+
+html+=`
+<div class="cart-item">
+<span>${item.producto}</span>
+<span>$${item.precio}</span>
 </div>
+`
 
-<footer>
+})
 
-🍕🔥 ¡Pizza recién hecha todos los días!
+document.getElementById("cartItems").innerHTML=html
+document.getElementById("total").innerHTML="Total $"+total
 
-</footer>
+}
+
+function pedido(){
+
+let telefono="526693123366"
+
+let mensaje="Pedido Santy's Pizzería%0A%0A"
+
+cart.forEach(item=>{
+mensaje+=item.producto+" - $"+item.precio+"%0A"
+})
+
+mensaje+="%0ATotal: $"+total
+
+window.open("https://wa.me/"+telefono+"?text="+mensaje)
+
+}
+
+</script>
 
 </body>
-
 </html>
