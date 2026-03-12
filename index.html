@@ -204,6 +204,34 @@ white-space:nowrap;
 cursor:pointer;
 }
 
+.destacados{
+display:grid;
+grid-template-columns:1fr;
+gap:12px;
+margin:20px;
+}
+
+.destacado{
+padding:16px;
+border-radius:12px;
+color:white;
+font-weight:bold;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.promo-dia{
+background:#ff7a00;
+}
+
+.mejor-precio{
+background:#27ae60;
+}
+
+.mas-pedido{
+background:#e74c3c;
+}
+
 </style>
 
 </head>
@@ -227,6 +255,27 @@ cursor:pointer;
 </header>
 
 <div class="promo" id="promo">
+
+<div class="destacados">
+
+<div class="destacado promo-dia">
+🔥 PROMO DEL DÍA<br>
+Pizza grande $159<br>
+Pepperoni o Jamón
+</div>
+
+<div class="destacado mejor-precio">
+💰 MEJOR PRECIO<br>
+Combo Familiar<br>
+Pizza 45cm + 10 alitas + papas
+</div>
+
+<div class="destacado mas-pedido">
+⭐ MÁS PEDIDO<br>
+Pepperoni
+</div>
+
+</div>
 
 <div id="promoTitulo"></div>
 <div id="promoTexto"></div>
