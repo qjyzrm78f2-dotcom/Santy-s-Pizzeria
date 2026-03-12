@@ -14,7 +14,7 @@ body{
 margin:0;
 font-family:Arial;
 background:#f4e6d8;
-padding-bottom:200px;
+padding-bottom:120px;
 }
 
 header{
@@ -56,7 +56,7 @@ box-shadow:0 6px 20px rgba(0,0,0,0.2);
 
 .card img{
 width:100%;
-height:200px;
+height:180px;
 object-fit:cover;
 }
 
@@ -92,7 +92,7 @@ border-radius:8px;
 border:1px solid #ccc;
 }
 
-/* BOTÓN FLOTANTE CARRITO */
+/* BOTÓN FLOTANTE */
 
 .cart-toggle{
 
@@ -104,9 +104,9 @@ transform:translateX(-50%);
 background:#ff7a00;
 color:white;
 
-padding:14px 22px;
+padding:12px 20px;
 
-border-radius:40px;
+border-radius:30px;
 
 font-weight:bold;
 
@@ -129,15 +129,15 @@ bottom:70px;
 left:50%;
 transform:translateX(-50%);
 
-width:92%;
-max-width:600px;
+width:90%;
+max-width:520px;
 
 background:#1f1f1f;
 color:white;
 
-padding:12px;
+padding:10px;
 
-border-radius:16px;
+border-radius:14px;
 
 box-shadow:0 -6px 25px rgba(0,0,0,0.5);
 
@@ -147,7 +147,7 @@ display:none;
 
 .cart-items{
 
-max-height:90px;
+max-height:70px;
 overflow:auto;
 
 margin-bottom:6px;
@@ -168,7 +168,7 @@ border-radius:8px;
 
 margin:4px 0;
 
-font-size:14px;
+font-size:13px;
 
 }
 
@@ -178,18 +178,18 @@ background:#ff3b30;
 border:none;
 border-radius:50%;
 
-width:22px;
-height:22px;
+width:20px;
+height:20px;
 
 color:white;
 
-font-size:14px;
+font-size:12px;
 cursor:pointer;
 
 }
 
 .total{
-font-size:16px;
+font-size:15px;
 margin-top:4px;
 }
 
@@ -198,7 +198,7 @@ margin-top:4px;
 background:#25D366;
 width:100%;
 
-padding:9px;
+padding:8px;
 
 border:none;
 
@@ -206,7 +206,7 @@ border-radius:10px;
 
 color:white;
 
-font-size:15px;
+font-size:14px;
 
 margin-top:6px;
 
@@ -218,7 +218,7 @@ background:#009ee3;
 
 width:100%;
 
-padding:9px;
+padding:8px;
 
 border:none;
 
@@ -226,7 +226,7 @@ border-radius:10px;
 
 color:white;
 
-font-size:15px;
+font-size:14px;
 
 margin-top:6px;
 
@@ -259,7 +259,7 @@ Pepperoni o Jamón
 
 <h2>Tipo de pedido</h2>
 
-<select id="tipoPedido" onchange="cambiarTipoPedido()">
+<select id="tipoPedido">
 
 <option value="domicilio">Entrega a domicilio</option>
 <option value="tienda">Recoger en tienda</option>
@@ -272,15 +272,11 @@ Pepperoni o Jamón
 
 <input id="telefono" placeholder="Teléfono">
 
-<div id="direccionCampos">
-
 <input id="direccion" placeholder="Dirección">
 
 <input id="calles" placeholder="Entre qué calles">
 
 <input id="referencia" placeholder="Referencia">
-
-</div>
 
 <h2>🍕 Pizzas</h2>
 
@@ -365,15 +361,11 @@ Pepperoni o Jamón
 
 </div>
 
-<!-- BOTÓN FLOTANTE -->
-
 <div class="cart-toggle" id="cartToggle" onclick="toggleCart()">
 
 🛒 Ver carrito (0)
 
 </div>
-
-<!-- CARRITO -->
 
 <div class="cart" id="cart">
 
@@ -486,23 +478,31 @@ boton.innerHTML="🛒 Ver carrito ("+cart.length+")"
 
 }
 
-function cambiarTipoPedido(){
-
-let tipo=document.getElementById("tipoPedido").value
-let direccionCampos=document.getElementById("direccionCampos")
-
-if(tipo=="tienda"){
-direccionCampos.style.display="none"
-}else{
-direccionCampos.style.display="block"
-}
-
-}
-
 function pedido(){
 
+let tipo=document.getElementById("tipoPedido").value
+let nombre=document.getElementById("nombre").value
+let telefono=document.getElementById("telefono").value
+let direccion=document.getElementById("direccion").value
+let calles=document.getElementById("calles").value
+let referencia=document.getElementById("referencia").value
+
 let mensaje="Pedido Santy's Pizzería%0A"
+
 mensaje+="Código: "+codigo+"%0A%0A"
+
+mensaje+="Cliente: "+nombre+"%0A"
+mensaje+="Teléfono: "+telefono+"%0A"
+
+if(tipo=="domicilio"){
+
+mensaje+="Dirección: "+direccion+"%0A"
+mensaje+="Entre calles: "+calles+"%0A"
+mensaje+="Referencia: "+referencia+"%0A"
+
+}
+
+mensaje+="%0A"
 
 cart.forEach(item=>{
 mensaje+=item.producto+" - $"+item.precio+"%0A"
@@ -538,11 +538,6 @@ function confirmarPago(){
 let nombre=document.getElementById("nombre").value
 let telefono=document.getElementById("telefono").value
 
-if(nombre==""||telefono==""){
-alert("Completa nombre y teléfono")
-return
-}
-
 let mensaje="PEDIDO PAGADO Santy's Pizzería%0A"
 mensaje+="Código: "+codigo+"%0A%0A"
 mensaje+="Cliente: "+nombre+"%0A"
@@ -557,6 +552,14 @@ mensaje+="%0ATotal pagado: $"+total
 window.open("https://wa.me/526693123366?text="+mensaje)
 
 }
+
+/* ocultar carrito al escribir */
+
+document.querySelectorAll("input").forEach(input=>{
+input.addEventListener("focus",()=>{
+document.getElementById("cart").style.display="none"
+})
+})
 
 </script>
 
