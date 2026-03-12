@@ -14,6 +14,7 @@ body{
 margin:0;
 font-family:Arial;
 background:#f4e6d8;
+padding-bottom:220px;
 }
 
 header{
@@ -21,6 +22,7 @@ background:#b22222;
 color:white;
 text-align:center;
 padding:30px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
 .container{
@@ -37,9 +39,14 @@ gap:20px;
 
 .card{
 background:white;
-border-radius:14px;
+border-radius:16px;
 overflow:hidden;
-box-shadow:0 6px 15px rgba(0,0,0,0.2);
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+transition:0.2s;
+}
+
+.card:hover{
+transform:scale(1.02);
 }
 
 .card img{
@@ -49,26 +56,29 @@ object-fit:cover;
 }
 
 .card-body{
-padding:15px;
+padding:16px;
 }
 
 .card h3{
 margin:0;
+font-size:20px;
 }
 
 .price{
-margin:8px 0;
+margin:10px 0;
 font-weight:bold;
+font-size:16px;
 }
 
 button{
 background:#ff7a00;
 border:none;
 padding:10px 14px;
-border-radius:8px;
+border-radius:10px;
 color:white;
 cursor:pointer;
-margin:3px;
+margin:4px;
+font-weight:bold;
 }
 
 button:hover{
@@ -80,24 +90,41 @@ position:fixed;
 bottom:0;
 left:0;
 width:100%;
-background:#222;
+background:#1f1f1f;
 color:white;
-padding:15px;
+padding:16px;
+box-shadow:0 -6px 20px rgba(0,0,0,0.4);
+}
+
+.cart-items{
+max-height:140px;
+overflow:auto;
 }
 
 .cart-item{
 display:flex;
 justify-content:space-between;
-margin:5px 0;
+align-items:center;
+margin:6px 0;
+background:#2c2c2c;
+padding:8px;
+border-radius:8px;
 }
 
 .remove{
-background:red;
+background:#ff3b30;
 border:none;
-border-radius:6px;
-padding:4px 8px;
+border-radius:50%;
+width:26px;
+height:26px;
 color:white;
+font-weight:bold;
 cursor:pointer;
+}
+
+.total{
+font-size:18px;
+margin-top:6px;
 }
 
 .whatsapp-btn{
@@ -105,7 +132,7 @@ background:#25D366;
 width:100%;
 padding:12px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 color:white;
 font-size:16px;
 margin-top:10px;
@@ -116,7 +143,7 @@ background:#009ee3;
 width:100%;
 padding:12px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 color:white;
 font-size:16px;
 margin-top:8px;
@@ -126,8 +153,19 @@ input{
 width:100%;
 padding:10px;
 margin-bottom:10px;
-border-radius:6px;
+border-radius:8px;
 border:1px solid #ccc;
+}
+
+.added{
+animation:addAnim .3s;
+}
+
+@keyframes addAnim{
+
+0%{transform:scale(.8)}
+100%{transform:scale(1)}
+
 }
 
 </style>
@@ -216,9 +254,9 @@ border:1px solid #ccc;
 
 <div class="cart">
 
-<div id="cartItems"></div>
+<div class="cart-items" id="cartItems"></div>
 
-<div id="total">Total $0</div>
+<div class="total" id="total">Total $0</div>
 
 <button class="whatsapp-btn" onclick="pedido()">
 Enviar pedido por WhatsApp
@@ -261,8 +299,16 @@ cart.forEach((item,index)=>{
 
 html+=`
 <div class="cart-item">
-${item.producto} $${item.precio}
-<button class="remove" onclick="removeItem(${index})">X</button>
+
+<div>
+<b>${item.producto}</b><br>
+$${item.precio}
+</div>
+
+<button class="remove" onclick="removeItem(${index})">
+×
+</button>
+
 </div>
 `
 
@@ -288,6 +334,8 @@ window.open("https://wa.me/526693123366?text="+mensaje)
 }
 
 function pagar(){
+
+alert("Total a pagar: $"+total)
 
 window.open("https://link.mercadopago.com.mx/santyspizzeria")
 
