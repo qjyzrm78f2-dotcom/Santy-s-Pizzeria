@@ -1,1 +1,141 @@
+_html"}
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Santy's Pizzería</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f5e6d3;
+}
+
+header{
+background:#b22222;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:15px;
+margin-bottom:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+button{
+background:#ff7a00;
+border:none;
+padding:10px 15px;
+color:white;
+border-radius:8px;
+margin:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e56700;
+}
+
+.cart{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#222;
+color:white;
+padding:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Santy's Pizzería</h1>
+<p>Hecha a mano · calidad superior</p>
+
+</header>
+
+<div class="container">
+
+<h2>🍕 Pizzas</h2>
+
+<div class="card">
+
+<h3>Pepperoni</h3>
+
+<button onclick="add('Pepperoni 35cm',179)">
+35cm $179
+</button>
+
+<button onclick="add('Pepperoni 40cm',199)">
+40cm $199
+</button>
+
+<button onclick="add('Pepperoni 45cm',229)">
+45cm $229
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Jamón</h3>
+
+<button onclick="add('Jamón 35cm',179)">
+35cm $179
+</button>
+
+<button onclick="add('Jamón 40cm',199)">
+40cm $199
+</button>
+
+<button onclick="add('Jamón 45cm',229)">
+45cm $229
+</button>
+
+</div>
+
+</div>
+
+<div class="cart">
+
+<div id="total">Total $0</div>
+
+</div>
+
+<script>
+
+let total=0
+
+function add(producto,precio){
+
+total+=precio
+
+document.getElementById("total").innerHTML=
+"Total $"+total
+
+}
+
+</script>
+
+</body>
