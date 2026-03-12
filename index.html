@@ -10,6 +10,18 @@
 
 <style>
 
+.promo{
+background:#ff7a00;
+color:white;
+text-align:center;
+padding:20px;
+font-size:20px;
+font-weight:bold;
+margin:20px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
 body{
 margin:0;
 font-family:Arial;
@@ -181,13 +193,42 @@ animation:addAnim .3s;
 
 </header>
 
+<div class="promo">
+
+🔥 PROMOCIÓN MOSTRADOR 🔥  
+Pizza grande $159  
+Pepperoni o Jamón  
+
+<p>Solo recogiendo en tienda</p>
+
+</div>
+
 <div class="container">
+    
+    <h2>Tipo de pedido</h2>
+
+<select id="tipoPedido" onchange="cambiarTipoPedido()">
+
+<option value="domicilio">Entrega a domicilio</option>
+<option value="tienda">Recoger en tienda</option>
+
+</select>
 
 <h2>Datos del cliente</h2>
 
 <input id="nombre" placeholder="Nombre">
+
 <input id="telefono" placeholder="Teléfono">
+
+<div id="direccionCampos">
+
 <input id="direccion" placeholder="Dirección">
+
+<input id="calles" placeholder="Entre qué calles">
+
+<input id="referencia" placeholder="Referencia del domicilio">
+
+</div>
 
 <h2>🍕 Pizzas</h2>
 
@@ -333,6 +374,24 @@ cart.push({producto,precio})
 total+=precio
 
 renderCart()
+
+function cambiarTipoPedido(){
+
+let tipo=document.getElementById("tipoPedido").value
+
+let direccionCampos=document.getElementById("direccionCampos")
+
+if(tipo=="tienda"){
+
+direccionCampos.style.display="none"
+
+}else{
+
+direccionCampos.style.display="block"
+
+}
+
+}
 
 }
 
