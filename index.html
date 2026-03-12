@@ -226,6 +226,33 @@ cursor:pointer;
 box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
 
+.menu-nav{
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding:10px;
+background:white;
+position:sticky;
+top:0;
+z-index:100;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.menu-nav button{
+background:#ff7a00;
+border:none;
+color:white;
+padding:8px 14px;
+border-radius:20px;
+font-weight:bold;
+white-space:nowrap;
+cursor:pointer;
+}
+
+.menu-nav button:hover{
+background:#e56700;
+}
+
 .add-floating:hover{
 background:#e56700;
 }
@@ -240,9 +267,23 @@ background:#e56700;
 
 <img src="logoo.png" class="banner">
 
+<div class="menu-nav">
+
+<button onclick="scrollToSection('promo')">Promos</button>
+
+<button onclick="scrollToSection('combos')">Combos</button>
+
+<button onclick="scrollToSection('pizzas')">Pizzas</button>
+
+<button onclick="scrollToSection('alitas')">Alitas</button>
+
+<button onclick="scrollToSection('papas')">Papas</button>
+
+</div>
+
 </header>
 
-<div class="promo">
+<div class="promo" id="promo">
 
 🔥 PROMOCIÓN MOSTRADOR 🔥  
 Pizza grande $159  
@@ -277,7 +318,7 @@ Pepperoni o Jamón
 
 </div>
 
-<h2>🍕 Pizzas</h2>
+<h2 id="pizzas">🍕 Pizzas</h2>
 
 <div class="menu-grid">
 
@@ -345,7 +386,7 @@ Pepperoni o Jamón
 
 </div>
 
-<h2>🍗 Alitas</h2>
+<h2 id="alitas">🍗 Alitas</h2>
 
 <div class="card">
 
@@ -370,7 +411,7 @@ Pepperoni o Jamón
 
 </div>
 
-<h2>🥔 Papas Gajo</h2>
+<h2 id="papas">🥔 Papas Gajo</h2>
 
 <div class="card">
 
@@ -430,6 +471,12 @@ if(tipo=="tienda"){
 campos.style.display="none"
 }else{
 campos.style.display="block"
+}
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({
+behavior:"smooth"
+});
 }
 
 }
