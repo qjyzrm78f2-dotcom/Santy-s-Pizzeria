@@ -259,8 +259,18 @@ Pepperoni o Jamón
 
 <h2>🍗 Alitas</h2>
 
-<button onclick="add('Alitas 6 piezas',99)">6 piezas $99</button>
-<button onclick="add('Alitas 10 piezas',149)">10 piezas $149</button>
+<select id="salsa">
+
+<option value="BBQ">BBQ</option>
+<option value="BBQ Picante">BBQ Picante</option>
+<option value="Búfalo">Búfalo</option>
+<option value="Red Hot">Red Hot</option>
+<option value="Mango Habanero">Mango Habanero</option>
+
+</select>
+
+<button onclick="agregarAlitas(6,99)">6 piezas $99</button>
+<button onclick="agregarAlitas(10,149)">10 piezas $149</button>
 
 <h2>🥔 Papas Gajo</h2>
 
@@ -272,6 +282,8 @@ Pepperoni o Jamón
 <div class="cart">
 
 <div class="cart-items" id="cartItems"></div>
+
+<div id="contadorCarrito"></div>
 
 <div class="total" id="total">Total $0</div>
 
@@ -299,6 +311,18 @@ function add(producto,precio){
 
 cart.push({producto,precio})
 total+=precio
+renderCart()
+
+}
+
+function agregarAlitas(cantidad,precio){
+
+let salsa=document.getElementById("salsa").value
+let producto="Alitas "+cantidad+" piezas - Salsa "+salsa
+
+cart.push({producto,precio})
+total+=precio
+
 renderCart()
 
 }
@@ -335,6 +359,9 @@ $${item.precio}
 
 document.getElementById("cartItems").innerHTML=html
 document.getElementById("total").innerHTML="Total $"+total
+
+document.getElementById("contadorCarrito").innerHTML=
+"Productos en carrito: "+cart.length
 
 }
 
