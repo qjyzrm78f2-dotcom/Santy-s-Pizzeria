@@ -10,20 +10,6 @@
 
 <style>
 
-body{
-margin:0;
-font-family:Arial;
-background:#f4e6d8;
-padding-bottom:120px;
-}
-
-header{
-background:#b22222;
-color:white;
-text-align:center;
-padding:30px;
-}
-
 .promo{
 background:#ff7a00;
 color:white;
@@ -33,6 +19,21 @@ font-size:20px;
 font-weight:bold;
 margin:20px;
 border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4e6d8;
+padding-bottom:140px;
+}
+
+header{
+background:#b22222;
+color:white;
+text-align:center;
+padding:30px;
 }
 
 .container{
@@ -56,73 +57,92 @@ box-shadow:0 6px 20px rgba(0,0,0,0.2);
 
 .card img{
 width:100%;
-height:180px;
+height:200px;
 object-fit:cover;
 }
 
 .card-body{
-padding:14px;
+padding:16px;
+}
+
+.price{
+margin:10px 0;
+font-weight:bold;
 }
 
 button{
 background:#ff7a00;
 border:none;
-padding:8px 12px;
+padding:10px 14px;
 border-radius:10px;
 color:white;
 cursor:pointer;
 margin:4px;
-font-size:14px;
-}
-
-input,select{
-width:100%;
-padding:9px;
-margin-bottom:10px;
-border-radius:8px;
-border:1px solid #ccc;
+font-weight:bold;
 }
 
 .cart-toggle{
+
 position:fixed;
 bottom:20px;
 left:50%;
 transform:translateX(-50%);
+
 background:#ff7a00;
 color:white;
-padding:12px 20px;
+
+padding:12px 22px;
+
 border-radius:30px;
+
 font-weight:bold;
+
 cursor:pointer;
+
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
+
 display:none;
+
+z-index:999;
+
 }
 
 .cart{
+
 position:fixed;
-bottom:70px;
+bottom:80px;
 left:50%;
 transform:translateX(-50%);
+
 width:90%;
-max-width:520px;
+max-width:420px;
+
 background:#1f1f1f;
 color:white;
-padding:10px;
-border-radius:14px;
+
+padding:12px;
+
+border-radius:16px;
+
+box-shadow:0 -6px 20px rgba(0,0,0,0.4);
+
 display:none;
+
 }
 
 .cart-items{
-max-height:70px;
+max-height:80px;
 overflow:auto;
 }
 
 .cart-item{
 display:flex;
 justify-content:space-between;
+align-items:center;
+margin:6px 0;
 background:#2c2c2c;
 padding:6px;
 border-radius:8px;
-margin:4px 0;
 font-size:13px;
 }
 
@@ -130,28 +150,45 @@ font-size:13px;
 background:#ff3b30;
 border:none;
 border-radius:50%;
-width:20px;
-height:20px;
+width:22px;
+height:22px;
 color:white;
 cursor:pointer;
+}
+
+.total{
+font-size:16px;
+margin-top:6px;
 }
 
 .whatsapp-btn{
 background:#25D366;
 width:100%;
-padding:8px;
+padding:10px;
 border:none;
 border-radius:10px;
-margin-top:6px;
+color:white;
+font-size:15px;
+margin-top:8px;
 }
 
 .pay-btn{
 background:#009ee3;
 width:100%;
-padding:8px;
+padding:10px;
 border:none;
 border-radius:10px;
+color:white;
+font-size:15px;
 margin-top:6px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border-radius:8px;
+border:1px solid #ccc;
 }
 
 </style>
@@ -178,7 +215,7 @@ Pepperoni o Jamón
 </div>
 
 <div class="container">
-
+    
 <h2>Tipo de pedido</h2>
 
 <select id="tipoPedido" onchange="cambiarTipoPedido()">
@@ -197,8 +234,10 @@ Pepperoni o Jamón
 <div id="direccionCampos">
 
 <input id="direccion" placeholder="Dirección">
+
 <input id="calles" placeholder="Entre qué calles">
-<input id="referencia" placeholder="Referencia">
+
+<input id="referencia" placeholder="Referencia del domicilio">
 
 </div>
 
@@ -207,9 +246,10 @@ Pepperoni o Jamón
 <div class="menu-grid">
 
 <div class="card">
-<img src="img_1633.JPG">
+<img src="img_1633.jpg">
 <div class="card-body">
 <h3>Mexicana</h3>
+<div class="price">$189 | $209 | $239</div>
 <button onclick="add('Mexicana 35cm',189)">35cm</button>
 <button onclick="add('Mexicana 40cm',209)">40cm</button>
 <button onclick="add('Mexicana 45cm',239)">45cm</button>
@@ -217,12 +257,46 @@ Pepperoni o Jamón
 </div>
 
 <div class="card">
-<img src="img_1632.JPG">
+<img src="img_1632.jpg">
 <div class="card-body">
 <h3>Pepperoni</h3>
+<div class="price">$179 | $199 | $229</div>
 <button onclick="add('Pepperoni 35cm',179)">35cm</button>
 <button onclick="add('Pepperoni 40cm',199)">40cm</button>
 <button onclick="add('Pepperoni 45cm',229)">45cm</button>
+</div>
+</div>
+
+<div class="card">
+<img src="img_1631.jpg">
+<div class="card-body">
+<h3>Hawaiana</h3>
+<div class="price">$189 | $209 | $239</div>
+<button onclick="add('Hawaiana 35cm',189)">35cm</button>
+<button onclick="add('Hawaiana 40cm',209)">40cm</button>
+<button onclick="add('Hawaiana 45cm',239)">45cm</button>
+</div>
+</div>
+
+<div class="card">
+<img src="img_1630.jpg">
+<div class="card-body">
+<h3>3 Carnes</h3>
+<div class="price">$199 | $219 | $249</div>
+<button onclick="add('3 Carnes 35cm',199)">35cm</button>
+<button onclick="add('3 Carnes 40cm',219)">40cm</button>
+<button onclick="add('3 Carnes 45cm',249)">45cm</button>
+</div>
+</div>
+
+<div class="card">
+<img src="img_1629.jpg">
+<div class="card-body">
+<h3>Jamón</h3>
+<div class="price">$179 | $199 | $229</div>
+<button onclick="add('Jamón 35cm',179)">35cm</button>
+<button onclick="add('Jamón 40cm',199)">40cm</button>
+<button onclick="add('Jamón 45cm',229)">45cm</button>
 </div>
 </div>
 
@@ -233,9 +307,9 @@ Pepperoni o Jamón
 <select id="salsa">
 
 <option value="BBQ">BBQ</option>
-<option value="BBQ Picante">BBQ Picante</option>
-<option value="Búfalo">Búfalo</option>
 <option value="Red Hot">Red Hot</option>
+<option value="Búfalo">Búfalo</option>
+<option value="BBQ Picante">BBQ Picante</option>
 <option value="Mango Habanero">Mango Habanero</option>
 
 </select>
@@ -260,7 +334,7 @@ Pepperoni o Jamón
 
 <div id="contadorCarrito"></div>
 
-<div id="total">Total $0</div>
+<div class="total" id="total">Total $0</div>
 
 <button class="whatsapp-btn" onclick="pedido()">
 Enviar pedido por WhatsApp
@@ -280,6 +354,7 @@ Confirmar pago realizado
 
 let cart=[]
 let total=0
+
 let codigo="SP-"+Math.floor(1000+Math.random()*9000)
 
 function cambiarTipoPedido(){
@@ -299,6 +374,7 @@ campos.style.display="block"
 function validarDatos(){
 
 let tipo=document.getElementById("tipoPedido").value
+
 let nombre=document.getElementById("nombre").value
 let telefono=document.getElementById("telefono").value
 let direccion=document.getElementById("direccion").value
@@ -313,10 +389,8 @@ return false
 if(tipo=="domicilio"){
 
 if(direccion=="" || calles=="" || referencia==""){
-
 alert("Completa todos los datos de domicilio")
 return false
-
 }
 
 }
@@ -329,6 +403,7 @@ function add(producto,precio){
 
 cart.push({producto,precio})
 total+=precio
+
 renderCart()
 
 }
@@ -350,7 +425,6 @@ renderCart()
 function removeItem(index){
 
 total-=cart[index].precio
-
 cart.splice(index,1)
 
 renderCart()
@@ -368,11 +442,8 @@ html+=`
 <div class="cart-item">
 
 <div>
-
 <b>${item.producto}</b><br>
-
 $${item.precio}
-
 </div>
 
 <button class="remove" onclick="removeItem(${index})">×</button>
@@ -384,19 +455,14 @@ $${item.precio}
 })
 
 document.getElementById("cartItems").innerHTML=html
-
 document.getElementById("total").innerHTML="Total $"+total
-
 document.getElementById("contadorCarrito").innerHTML="Productos en carrito: "+cart.length
 
 let boton=document.getElementById("cartToggle")
 
 if(cart.length>0){
-
 boton.style.display="block"
-
 boton.innerHTML="🛒 Ver carrito ("+cart.length+")"
-
 }
 
 }
@@ -406,13 +472,9 @@ function toggleCart(){
 let cartBox=document.getElementById("cart")
 
 if(cartBox.style.display=="block"){
-
 cartBox.style.display="none"
-
 }else{
-
 cartBox.style.display="block"
-
 }
 
 }
@@ -421,21 +483,26 @@ function pedido(){
 
 if(!validarDatos()) return
 
+let tipo=document.getElementById("tipoPedido").value
+
+let nombre=document.getElementById("nombre").value
+let telefono=document.getElementById("telefono").value
+let direccion=document.getElementById("direccion").value
+let calles=document.getElementById("calles").value
+let referencia=document.getElementById("referencia").value
+
 let mensaje="Pedido Santy's Pizzería%0A"
 
 mensaje+="Código: "+codigo+"%0A%0A"
 
-let nombre=document.getElementById("nombre").value
-let telefono=document.getElementById("telefono").value
-
 mensaje+="Cliente: "+nombre+"%0A"
 mensaje+="Teléfono: "+telefono+"%0A"
 
-if(document.getElementById("tipoPedido").value=="domicilio"){
+if(tipo=="domicilio"){
 
-mensaje+="Dirección: "+document.getElementById("direccion").value+"%0A"
-mensaje+="Entre calles: "+document.getElementById("calles").value+"%0A"
-mensaje+="Referencia: "+document.getElementById("referencia").value+"%0A"
+mensaje+="Dirección: "+direccion+"%0A"
+mensaje+="Entre calles: "+calles+"%0A"
+mensaje+="Referencia: "+referencia+"%0A"
 
 }
 
@@ -455,7 +522,13 @@ function pagar(){
 
 if(!validarDatos()) return
 
-alert("Código de pedido: "+codigo+"\n\nCopia este código en tu referencia de pago.\n\nTotal $"+total)
+let mensaje="Código de pedido: "+codigo+
+
+"\n\nCopia este código en tu referencia de pago."+ 
+
+"\n\nTotal a pagar: $"+total
+
+alert(mensaje)
 
 window.open("https://link.mercadopago.com.mx/santyspizzeria")
 
@@ -465,9 +538,15 @@ function confirmarPago(){
 
 if(!validarDatos()) return
 
-let mensaje="PEDIDO PAGADO%0A"
+let mensaje="PEDIDO PAGADO Santy's Pizzería%0A"
 
-mensaje+="Código: "+codigo+"%0A"
+mensaje+="Código: "+codigo+"%0A%0A"
+
+cart.forEach(item=>{
+mensaje+=item.producto+" - $"+item.precio+"%0A"
+})
+
+mensaje+="%0ATotal pagado: $"+total
 
 window.open("https://wa.me/526693123366?text="+mensaje)
 
