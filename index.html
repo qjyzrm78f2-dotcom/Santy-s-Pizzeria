@@ -14,7 +14,7 @@ body{
 margin:0;
 font-family:Arial;
 background:#f4e6d8;
-padding-bottom:230px;
+padding-bottom:320px;
 }
 
 header{
@@ -77,73 +77,133 @@ border-radius:10px;
 color:white;
 cursor:pointer;
 margin:4px;
+font-weight:bold;
+}
+
+button:hover{
+background:#e56700;
 }
 
 .cart{
+
 position:fixed;
-bottom:0;
-left:0;
-width:100%;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+
+width:95%;
+max-width:700px;
+
 background:#1f1f1f;
 color:white;
-padding:16px;
+
+padding:14px;
+
+border-radius:16px;
+
+box-shadow:0 -6px 30px rgba(0,0,0,0.5);
+
 }
 
 .cart-items{
-max-height:140px;
+
+max-height:120px;
 overflow:auto;
+
+margin-bottom:10px;
+
 }
 
 .cart-item{
+
 display:flex;
 justify-content:space-between;
+align-items:center;
+
 background:#2c2c2c;
+
 padding:8px;
+
 border-radius:8px;
+
 margin:5px 0;
+
 }
 
 .remove{
+
 background:#ff3b30;
 border:none;
 border-radius:50%;
+
 width:26px;
 height:26px;
+
 color:white;
+
+font-weight:bold;
 cursor:pointer;
+
 }
 
 .total{
+
 font-size:18px;
 margin-top:6px;
+
 }
 
 .whatsapp-btn{
+
 background:#25D366;
 width:100%;
+
 padding:12px;
+
 border:none;
+
 border-radius:10px;
+
 color:white;
+
+font-size:16px;
+
 margin-top:10px;
+
 }
 
 .pay-btn{
+
 background:#009ee3;
+
 width:100%;
+
 padding:12px;
+
 border:none;
+
 border-radius:10px;
+
 color:white;
+
+font-size:16px;
+
 margin-top:8px;
+
 }
 
 input,select{
+
 width:100%;
+
 padding:10px;
+
 margin-bottom:10px;
+
 border-radius:8px;
+
 border:1px solid #ccc;
+
 }
 
 </style>
@@ -163,6 +223,7 @@ border:1px solid #ccc;
 
 🔥 PROMOCIÓN MOSTRADOR 🔥  
 Pizza grande $159  
+
 Pepperoni o Jamón  
 
 <p>Solo recogiendo en tienda</p>
