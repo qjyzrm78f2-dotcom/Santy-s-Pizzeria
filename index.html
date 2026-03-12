@@ -82,52 +82,34 @@ font-weight:bold;
 }
 
 .cart-toggle{
-
 position:fixed;
 bottom:20px;
 left:50%;
 transform:translateX(-50%);
-
 background:#ff7a00;
 color:white;
-
 padding:12px 22px;
-
 border-radius:30px;
-
 font-weight:bold;
-
 cursor:pointer;
-
 box-shadow:0 6px 20px rgba(0,0,0,0.3);
-
 display:none;
-
 z-index:999;
-
 }
 
 .cart{
-
 position:fixed;
 bottom:80px;
 left:50%;
 transform:translateX(-50%);
-
 width:90%;
 max-width:420px;
-
 background:#1f1f1f;
 color:white;
-
 padding:12px;
-
 border-radius:16px;
-
 box-shadow:0 -6px 20px rgba(0,0,0,0.4);
-
 display:none;
-
 }
 
 .cart-items{
@@ -191,39 +173,12 @@ border-radius:8px;
 border:1px solid #ccc;
 }
 
-.logo{
-width:160px;
-height:auto;
-display:block;
-margin:auto;
-}
-
 .banner{
 width:100vw;
 height:300px;
 object-fit:cover;
 display:block;
 margin-left:calc(-50vw + 50%);
-}
-
-.img-container{
-position:relative;
-}
-
-.add-floating{
-position:absolute;
-bottom:10px;
-right:10px;
-background:#ff7a00;
-color:white;
-border:none;
-width:45px;
-height:45px;
-border-radius:50%;
-font-size:24px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
 
 .menu-nav{
@@ -249,14 +204,6 @@ white-space:nowrap;
 cursor:pointer;
 }
 
-.menu-nav button:hover{
-background:#e56700;
-}
-
-.add-floating:hover{
-background:#e56700;
-}
-
 </style>
 
 </head>
@@ -270,13 +217,9 @@ background:#e56700;
 <div class="menu-nav">
 
 <button onclick="scrollToSection('promo')">Promos</button>
-
 <button onclick="scrollToSection('combos')">Combos</button>
-
 <button onclick="scrollToSection('pizzas')">Pizzas</button>
-
 <button onclick="scrollToSection('alitas')">Alitas</button>
-
 <button onclick="scrollToSection('papas')">Papas</button>
 
 </div>
@@ -292,30 +235,23 @@ Pepperoni o Jamón
 </div>
 
 <div class="container">
-    
+
 <h2>Tipo de pedido</h2>
 
 <select id="tipoPedido" onchange="cambiarTipoPedido()">
-
 <option value="domicilio">Entrega a domicilio</option>
 <option value="tienda">Recoger en tienda</option>
-
 </select>
 
 <h2>Datos del cliente</h2>
 
 <input id="nombre" placeholder="Nombre">
-
 <input id="telefono" placeholder="Teléfono">
 
 <div id="direccionCampos">
-
 <input id="direccion" placeholder="Dirección">
-
 <input id="calles" placeholder="Entre qué calles">
-
 <input id="referencia" placeholder="Referencia del domicilio">
-
 </div>
 
 <h2 id="pizzas">🍕 Pizzas</h2>
@@ -323,17 +259,10 @@ Pepperoni o Jamón
 <div class="menu-grid">
 
 <div class="card">
-<div class="img-container">
-
-</button>
-
-</div>
-
-<div class="card">
 <img src="img_1633.png">
 <div class="card-body">
 <h3>Mexicana</h3>
-<div class="price">  $189   | $209   | $239</div>
+<div class="price">$189 | $209 | $239</div>
 <button onclick="add('Mexicana 35cm',189)">35cm</button>
 <button onclick="add('Mexicana 40cm',209)">40cm</button>
 <button onclick="add('Mexicana 45cm',239)">45cm</button>
@@ -395,13 +324,11 @@ Pepperoni o Jamón
 <div class="card-body">
 
 <select id="salsa">
-
-<option value="BBQ">BBQ</option>
-<option value="Red Hot">Red Hot</option>
-<option value="Búfalo">Búfalo</option>
-<option value="BBQ Picante">BBQ Picante</option>
-<option value="Mango Habanero">Mango Habanero</option>
-
+<option>BBQ</option>
+<option>Red Hot</option>
+<option>Búfalo</option>
+<option>BBQ Picante</option>
+<option>Mango Habanero</option>
 </select>
 
 <button onclick="agregarAlitas(6,99)">6 piezas $99</button>
@@ -461,22 +388,21 @@ let total=0
 
 let codigo="SP-"+Math.floor(1000+Math.random()*9000)
 
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({
+behavior:"smooth"
+});
+}
+
 function cambiarTipoPedido(){
 
 let tipo=document.getElementById("tipoPedido").value
-
 let campos=document.getElementById("direccionCampos")
 
 if(tipo=="tienda"){
 campos.style.display="none"
 }else{
 campos.style.display="block"
-}
-
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({
-behavior:"smooth"
-});
 }
 
 }
@@ -497,23 +423,19 @@ return false
 }
 
 if(tipo=="domicilio"){
-
 if(direccion=="" || calles=="" || referencia==""){
 alert("Completa todos los datos de domicilio")
 return false
 }
-
 }
 
 return true
-
 }
 
 function add(producto,precio){
 
 cart.push({producto,precio})
 total+=precio
-
 renderCart()
 
 }
@@ -521,11 +443,9 @@ renderCart()
 function agregarAlitas(cantidad,precio){
 
 let salsa=document.getElementById("salsa").value
-
 let producto="Alitas "+cantidad+" piezas - Salsa "+salsa
 
 cart.push({producto,precio})
-
 total+=precio
 
 renderCart()
@@ -609,11 +529,9 @@ mensaje+="Cliente: "+nombre+"%0A"
 mensaje+="Teléfono: "+telefono+"%0A"
 
 if(tipo=="domicilio"){
-
 mensaje+="Dirección: "+direccion+"%0A"
 mensaje+="Entre calles: "+calles+"%0A"
 mensaje+="Referencia: "+referencia+"%0A"
-
 }
 
 mensaje+="%0A"
