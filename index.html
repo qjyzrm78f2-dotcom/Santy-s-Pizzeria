@@ -228,9 +228,8 @@ cursor:pointer;
 
 <div class="promo" id="promo">
 
-🔥 PROMOCIÓN MOSTRADOR 🔥  
-Pizza grande $159  
-Pepperoni o Jamón  
+<div id="promoTitulo"></div>
+<div id="promoTexto"></div>
 
 </div>
 
@@ -579,6 +578,52 @@ mensaje+="%0ATotal pagado: $"+total
 window.open("https://wa.me/526693123366?text="+mensaje)
 
 }
+
+function promoDelDia(){
+
+let hoy=new Date().getDay()
+
+let titulo=document.getElementById("promoTitulo")
+let texto=document.getElementById("promoTexto")
+
+if(hoy==1){
+titulo.innerHTML="🔥 PROMO DEL LUNES"
+texto.innerHTML="Pizza grande $159<br>Pepperoni o Jamón"
+}
+
+if(hoy==2){
+titulo.innerHTML="🔥 PROMO DEL MARTES"
+texto.innerHTML="Alitas 6 piezas $89"
+}
+
+if(hoy==3){
+titulo.innerHTML="🔥 PROMO DEL MIÉRCOLES"
+texto.innerHTML="Combo pizza + papas $199"
+}
+
+if(hoy==4){
+titulo.innerHTML="🔥 PROMO DEL JUEVES"
+texto.innerHTML="Pizza 40cm $199"
+}
+
+if(hoy==5){
+titulo.innerHTML="🔥 PROMO DEL VIERNES"
+texto.innerHTML="Combo pizza + alitas $249"
+}
+
+if(hoy==6){
+titulo.innerHTML="🔥 PROMO DEL SÁBADO"
+texto.innerHTML="Pizza 45cm $249"
+}
+
+if(hoy==0){
+titulo.innerHTML="🔥 PROMO DEL DOMINGO"
+texto.innerHTML="Combo familiar especial"
+}
+
+}
+
+promoDelDia()
 
 </script>
 
