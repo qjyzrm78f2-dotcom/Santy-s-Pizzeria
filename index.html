@@ -586,8 +586,12 @@ window.open("https://wa.me/526693123366?text="+m)
 }
 
 function pagar(){
-alert("Código de pedido: "+codigo)
-window.open("https://link.mercadopago.com.mx/santyspizzeria")
+
+localStorage.setItem("pedido",JSON.stringify(cart))
+localStorage.setItem("total",total)
+
+window.location.href="https://link.mercadopago.com.mx/santyspizzeria"
+
 }
 
 function confirmarPago(){
@@ -652,6 +656,32 @@ h.innerHTML="⏰ Disponible 10AM – 4PM"
 
 setInterval(promoDelDia,1000)
 promoDelDia()
+
+window.onload=function(){
+
+let pedido=localStorage.getItem("pedido")
+let total=localStorage.getItem("total")
+
+if(pedido){
+
+let cart=JSON.parse(pedido)
+
+let mensaje="PEDIDO PAGADO Santy's Pizzería%0A%0A"
+
+cart.forEach(p=>{
+mensaje+=p.producto+" - $"+p.precio+"%0A"
+})
+
+mensaje+="%0ATotal pagado: $"+total
+
+window.open("https://wa.me/526693123366?text="+mensaje)
+
+localStorage.removeItem("pedido")
+localStorage.removeItem("total")
+
+}
+
+}
 
 /* AUTO SCROLL PROMOS */
 
