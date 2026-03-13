@@ -552,11 +552,17 @@ window.open("https://wa.me/526693123366?text="+mensaje)
 
 function promoDelDia(){
 
-let hoy=new Date().getDay()
+let ahora=new Date()
+let hoy=ahora.getDay()
+let hora=ahora.getHours()
+let minuto=ahora.getMinutes()
 
 let titulo=document.getElementById("promoTitulo")
 let texto=document.getElementById("promoTexto")
 let imagen=document.getElementById("promoDiaImg")
+
+let inicio=10
+let fin=16
 
 if(hoy==1){
 titulo.innerHTML="🔥 PROMO DEL LUNES"
@@ -599,6 +605,26 @@ titulo.innerHTML="🔥 PROMO DEL DOMINGO"
 texto.innerHTML="Pizza 45cm + Alitas + Papas $399"
 imagen.src="promo-domingo.png"
 }
+
+let aviso=document.createElement("div")
+aviso.style.marginTop="6px"
+aviso.style.fontSize="13px"
+aviso.style.color="#ff7a00"
+
+if(hora>=inicio && hora<fin){
+
+let horasRestantes=fin-hora-1
+let minutosRestantes=59-minuto
+
+aviso.innerHTML="🔥 Solo hoy • termina en "+horasRestantes+"h "+minutosRestantes+"m"
+
+}else{
+
+aviso.innerHTML="⏰ Disponible de 10:00 AM a 4:00 PM"
+
+}
+
+texto.appendChild(aviso)
 
 }
 
