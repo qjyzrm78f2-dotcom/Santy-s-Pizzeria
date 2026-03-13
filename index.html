@@ -96,18 +96,70 @@ padding:20px;
 margin:20px;
 }
 
-.destacado{
-padding:16px;
-border-radius:12px;
-color:white;
-margin:10px 0;
+.promos-slider{
+display:flex;
+gap:14px;
+overflow-x:auto;
+padding:10px 0;
+scroll-snap-type:x mandatory;
+}
+
+.promos-slider::-webkit-scrollbar{
+display:none;
+}
+
+.promos{
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.promo-card{
+position:relative;
+background:white;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.promo-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.promo-info{
+padding:14px;
+font-weight:bold;
 text-align:center;
+}
+
+.promo-label{
+position:absolute;
+top:10px;
+left:10px;
+background:#ff7a00;
+color:white;
+padding:6px 12px;
+border-radius:8px;
+font-size:13px;
 font-weight:bold;
 }
 
-.promo-dia{background:#ff7a00;}
-.mejor-precio{background:#27ae60;}
-.mas-pedido{background:#e74c3c;}
+.promo-label.green{
+background:#27ae60;
+}
+
+.promo-label.red{
+background:#e74c3c;
+}
+
+.promo-urgencia{
+font-size:13px;
+color:#ff7a00;
+margin-top:6px;
+}
 
 .cart-toggle{
 position:fixed;
@@ -122,7 +174,6 @@ font-weight:bold;
 box-shadow:0 6px 20px rgba(0,0,0,0.3);
 display:none;
 z-index:999;
-transition:.25s;
 }
 
 .cart{
@@ -205,7 +256,6 @@ color:white;
 padding:12px 20px;
 border-radius:25px;
 font-weight:bold;
-box-shadow:0 6px 20px rgba(0,0,0,0.25);
 opacity:0;
 transition:.4s;
 z-index:1000;
@@ -214,97 +264,6 @@ z-index:1000;
 #toast.show{
 opacity:1;
 transform:translateX(-50%) translateY(-10px);
-}
-
-.promo-mostrador{
-background:#ff7a00;
-color:white;
-}
-
-.promos-slider{
-display:flex;
-gap:14px;
-overflow-x:auto;
-padding:10px 0;
-scroll-snap-type:x mandatory;
-}
-
-.promos-slider::-webkit-scrollbar{
-display:none;
-}
-
-.destacado{
-min-width:240px;
-padding:18px;
-border-radius:14px;
-color:white;
-font-weight:bold;
-text-align:center;
-scroll-snap-align:start;
-box-shadow:0 6px 18px rgba(0,0,0,0.15);
-}
-
-.promo-mostrador{
-background:#ff7a00;
-}
-
-.promo-dia{
-background:#ff7a00;
-}
-
-.mejor-precio{
-background:#27ae60;
-}
-
-.mas-pedido{
-background:#e74c3c;
-}
-
-.promos{
-padding:20px;
-display:flex;
-flex-direction:column;
-gap:16px;
-}
-
-.promo-card{
-position:relative;
-background:white;
-border-radius:16px;
-overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
-}
-
-.promo-card img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
-
-.promo-info{
-padding:14px;
-font-weight:bold;
-text-align:center;
-}
-
-.promo-label{
-position:absolute;
-top:10px;
-left:10px;
-background:#ff7a00;
-color:white;
-padding:6px 12px;
-border-radius:8px;
-font-size:13px;
-font-weight:bold;
-}
-
-.promo-label.green{
-background:#27ae60;
-}
-
-.promo-label.red{
-background:#e74c3c;
 }
 
 </style>
@@ -330,66 +289,46 @@ background:#e74c3c;
 <div class="promos-slider">
 
 <div class="promo-card">
-
-<div class="promo-label">
-💥 MOSTRADOR
-</div>
-
+<div class="promo-label">💥 MOSTRADOR</div>
 <img src="peperoni-jamon.png">
-
 <div class="promo-info">
 Pizza grande $159<br>
 Pepperoni o Jamón
 </div>
-
 </div>
 
 <div class="promo-card">
-
-<div class="promo-label">
-🔥 PROMO DEL DÍA
-</div>
+<div class="promo-label">🔥 PROMO DEL DÍA</div>
 
 <img id="promoDiaImg" src="promo-lunes.png">
 
 <div class="promo-info">
 <div id="promoTitulo"></div>
 <div id="promoTexto"></div>
+<div class="promo-urgencia">
+🔥 Solo hoy • ⏳ Hasta las 10:00 PM
 </div>
-
+</div>
 </div>
 
 <div class="promo-card">
-
-<div class="promo-label green">
-💰 MEJOR PRECIO
-</div>
-
+<div class="promo-label green">💰 MEJOR PRECIO</div>
 <img src="combo-familiar.png">
-
 <div class="promo-info">
 Combo Familiar<br>
 Pizza 45cm + 10 alitas + papas
 </div>
-
 </div>
 
 <div class="promo-card">
-
-<div class="promo-label red">
-🔥 MÁS PEDIDO
-</div>
-
+<div class="promo-label red">🔥 MÁS PEDIDO</div>
 <img src="img_1631.png">
-
 <div class="promo-info">
-🍕HAWAIANA 
+🍕 HAWAIANA
+</div>
 </div>
 
 </div>
-
-</div>
-
 </div>
 
 <div class="container">
@@ -479,19 +418,13 @@ Pizza 45cm + 10 alitas + papas
 </div>
 
 <div class="cart" id="cart">
-
 <div class="cart-items" id="cartItems"></div>
-
 <div id="contadorCarrito"></div>
-
 <div class="total" id="total">Total $0</div>
 
 <button class="whatsapp-btn" onclick="pedido()">Enviar pedido por WhatsApp</button>
-
 <button class="pay-btn" onclick="pagar()">Pagar con tarjeta</button>
-
 <button class="pay-btn" onclick="confirmarPago()">Confirmar pago realizado</button>
-
 </div>
 
 <div id="toast">✔ Producto agregado</div>
@@ -507,62 +440,37 @@ document.getElementById(id).scrollIntoView({behavior:"smooth"})
 }
 
 function cambiarTipoPedido(){
-
 let tipo=document.getElementById("tipoPedido").value
 let campos=document.getElementById("direccionCampos")
-
-if(tipo=="tienda"){
-campos.style.display="none"
-}else{
-campos.style.display="block"
-}
-
+campos.style.display=(tipo=="tienda")?"none":"block"
 }
 
 function mostrarToast(){
-
 let toast=document.getElementById("toast")
-
 toast.classList.add("show")
-
-setTimeout(()=>{
-toast.classList.remove("show")
-},1200)
-
+setTimeout(()=>{toast.classList.remove("show")},1200)
 }
 
 function add(producto,precio){
-
 cart.push({producto,precio})
 total+=precio
-
 renderCart()
 mostrarToast()
-
 }
 
 function agregarAlitas(cantidad,precio){
-
 let salsa=document.getElementById("salsa").value
-
 let producto="Alitas "+cantidad+" piezas - Salsa "+salsa
-
 cart.push({producto,precio})
-
 total+=precio
-
 renderCart()
 mostrarToast()
-
 }
 
 function removeItem(index){
-
 total-=cart[index].precio
 cart.splice(index,1)
-
 renderCart()
-
 }
 
 function renderCart(){
@@ -570,7 +478,6 @@ function renderCart(){
 let html=""
 
 cart.forEach((item,index)=>{
-
 html+=`
 <div class="cart-item">
 <div>
@@ -580,7 +487,6 @@ $${item.precio}
 <button class="remove" onclick="removeItem(${index})">×</button>
 </div>
 `
-
 })
 
 document.getElementById("cartItems").innerHTML=html
@@ -597,22 +503,16 @@ boton.innerHTML="🛒 Ver carrito ("+cart.length+")"
 }
 
 function toggleCart(){
-
 let cartBox=document.getElementById("cart")
 let boton=document.getElementById("cartToggle")
 
 if(cartBox.style.display=="block"){
-
 cartBox.style.display="none"
 boton.style.display="block"
-
 }else{
-
 cartBox.style.display="block"
 boton.style.display="none"
-
 }
-
 }
 
 function pedido(){
@@ -631,11 +531,8 @@ window.open("https://wa.me/526693123366?text="+mensaje)
 }
 
 function pagar(){
-
 alert("Código de pedido: "+codigo+"\n\nCopia este código en tu referencia de pago")
-
 window.open("https://link.mercadopago.com.mx/santyspizzeria")
-
 }
 
 function confirmarPago(){
@@ -663,44 +560,44 @@ let imagen=document.getElementById("promoDiaImg")
 
 if(hoy==1){
 titulo.innerHTML="🔥 PROMO DEL LUNES"
-texto.innerHTML="Pizza grande $159"
-imagen.src=promo-lunes.png"
+texto.innerHTML="Pizza + Papas $199"
+imagen.src="promo-lunes.png"
 }
 
 if(hoy==2){
 titulo.innerHTML="🔥 PROMO DEL MARTES"
-texto.innerHTML="Alitas 6 piezas $89"
-imagen.src=promo-martes.png"
+texto.innerHTML="Pizza + Alitas $219"
+imagen.src="promo-martes.png"
 }
 
 if(hoy==3){
 titulo.innerHTML="🔥 PROMO DEL MIÉRCOLES"
-texto.innerHTML="Combo pizza + papas $199"
-imagen.src=promo-miercoles.png"
+texto.innerHTML="Pizza + Papas + Refresco $239"
+imagen.src="promo-miercoles.png"
 }
 
 if(hoy==4){
 titulo.innerHTML="🔥 PROMO DEL JUEVES"
 texto.innerHTML="Pizza 40cm $199"
-imagen.src=promo-jueves.png"
+imagen.src="promo-jueves.png"
 }
 
 if(hoy==5){
 titulo.innerHTML="🔥 PROMO DEL VIERNES"
-texto.innerHTML="Combo pizza + alitas $249"
-imagen.src=promo-viernes.png"
+texto.innerHTML="2 Pizzas 35cm $299"
+imagen.src="promo-viernes.png"
 }
 
 if(hoy==6){
 titulo.innerHTML="🔥 PROMO DEL SÁBADO"
-texto.innerHTML="Pizza 45cm $249"
-imagen.src=promo-sabado.png"
+texto.innerHTML="Pizza 40cm + 10 Alitas $349"
+imagen.src="promo-sabado.png"
 }
 
 if(hoy==0){
 titulo.innerHTML="🔥 PROMO DEL DOMINGO"
-texto.innerHTML="Combo familiar especial"
-imagen.src=promo-domingo.png"
+texto.innerHTML="Pizza 45cm + Alitas + Papas $399"
+imagen.src="promo-domingo.png"
 }
 
 }
