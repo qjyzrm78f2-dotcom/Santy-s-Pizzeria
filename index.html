@@ -350,7 +350,7 @@ Pepperoni o Jamón
 🔥 PROMO DEL DÍA
 </div>
 
-<img src="promo-dia.jpg">
+<img id="promoDiaImg" src="promo-lunes.png">
 
 <div class="promo-info">
 <div id="promoTitulo"></div>
@@ -659,40 +659,48 @@ let hoy=new Date().getDay()
 
 let titulo=document.getElementById("promoTitulo")
 let texto=document.getElementById("promoTexto")
+let imagen=document.getElementById("promoDiaImg")
 
 if(hoy==1){
 titulo.innerHTML="🔥 PROMO DEL LUNES"
 texto.innerHTML="Pizza grande $159"
+imagen.src=promo-lunes.png"
 }
 
 if(hoy==2){
 titulo.innerHTML="🔥 PROMO DEL MARTES"
 texto.innerHTML="Alitas 6 piezas $89"
+imagen.src=promo-martes.png"
 }
 
 if(hoy==3){
 titulo.innerHTML="🔥 PROMO DEL MIÉRCOLES"
 texto.innerHTML="Combo pizza + papas $199"
+imagen.src=promo-miercoles.png"
 }
 
 if(hoy==4){
 titulo.innerHTML="🔥 PROMO DEL JUEVES"
 texto.innerHTML="Pizza 40cm $199"
+imagen.src=promo-jueves.png"
 }
 
 if(hoy==5){
 titulo.innerHTML="🔥 PROMO DEL VIERNES"
 texto.innerHTML="Combo pizza + alitas $249"
+imagen.src=promo-viernes.png"
 }
 
 if(hoy==6){
 titulo.innerHTML="🔥 PROMO DEL SÁBADO"
 texto.innerHTML="Pizza 45cm $249"
+imagen.src=promo-sabado.png"
 }
 
 if(hoy==0){
 titulo.innerHTML="🔥 PROMO DEL DOMINGO"
 texto.innerHTML="Combo familiar especial"
+imagen.src=promo-domingo.png"
 }
 
 }
