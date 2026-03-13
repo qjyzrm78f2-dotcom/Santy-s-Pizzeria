@@ -13,7 +13,7 @@ body{
 margin:0;
 font-family:Arial;
 background:#f4e6d8;
-padding-bottom:320px;
+padding-bottom:200px;
 }
 
 header{
@@ -65,35 +65,24 @@ padding:10px 0 25px 0;
 }
 
 .promos-slider{
-
 display:flex;
 gap:16px;
-
 overflow-x:auto;
 padding:0 16px;
-
 scroll-snap-type:x mandatory;
-
 }
 
 .promos-slider::-webkit-scrollbar{
 display:none;
 }
 
-/* TARJETA PROMO */
-
 .promo-card{
-
-flex:0 0 85%;
-
+flex:0 0 88%;
 background:white;
 border-radius:22px;
 overflow:hidden;
-
 box-shadow:0 14px 30px rgba(0,0,0,0.15);
-
-scroll-snap-align:center;
-
+scroll-snap-align:start;
 }
 
 .promo-card img{
@@ -111,28 +100,18 @@ line-height:1.4;
 }
 
 .promo-label{
-
 position:absolute;
 margin:12px;
-
 background:#ff7a00;
 color:white;
-
 padding:6px 12px;
 border-radius:10px;
-
 font-size:13px;
 font-weight:bold;
-
 }
 
-.promo-label.green{
-background:#27ae60;
-}
-
-.promo-label.red{
-background:#e74c3c;
-}
+.promo-label.green{background:#27ae60;}
+.promo-label.red{background:#e74c3c;}
 
 .promo-urgencia{
 font-size:13px;
@@ -140,29 +119,139 @@ color:#ff7a00;
 margin-top:6px;
 }
 
+/* MENU */
+
+.menu-grid{
+display:grid;
+gap:20px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card img{
+width:100%;
+height:230px;
+object-fit:cover;
+}
+
+.card-body{
+padding:15px;
+}
+
+.price{
+margin:10px 0;
+font-weight:bold;
+}
+
+button{
+background:#ff7a00;
+border:none;
+padding:10px 14px;
+border-radius:10px;
+color:white;
+font-weight:bold;
+margin:4px;
+}
+
+/* CARRITO */
+
+.cart-toggle{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#ff7a00;
+color:white;
+padding:12px 22px;
+border-radius:30px;
+font-weight:bold;
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
+display:none;
+z-index:999;
+}
+
+.cart{
+position:fixed;
+bottom:80px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:420px;
+background:#1f1f1f;
+color:white;
+padding:12px;
+border-radius:16px;
+display:none;
+}
+
+.cart-items{
+max-height:120px;
+overflow:auto;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+margin:6px 0;
+background:#2c2c2c;
+padding:6px;
+border-radius:8px;
+}
+
+.remove{
+background:#ff3b30;
+border:none;
+border-radius:50%;
+width:22px;
+height:22px;
+color:white;
+}
+
+.total{
+font-size:16px;
+margin-top:6px;
+}
+
+.whatsapp-btn{
+background:#25D366;
+width:100%;
+padding:10px;
+border:none;
+border-radius:10px;
+color:white;
+margin-top:8px;
+}
+
+.pay-btn{
+background:#009ee3;
+width:100%;
+padding:10px;
+border:none;
+border-radius:10px;
+color:white;
+margin-top:6px;
+}
+
 /* TOAST */
 
 #toast{
-
 position:fixed;
 bottom:160px;
 left:50%;
-
 transform:translateX(-50%);
-
 background:#2ecc71;
 color:white;
-
 padding:12px 20px;
 border-radius:25px;
-
 font-weight:bold;
-
 opacity:0;
 transition:.4s;
-
 z-index:1000;
-
 }
 
 #toast.show{
@@ -180,12 +269,10 @@ transform:translateX(-50%) translateY(-10px);
 <img src="logoo.png" class="banner">
 
 <div class="menu-nav">
-
 <button onclick="scrollToSection('promo')">Promos</button>
 <button onclick="scrollToSection('pizzas')">Pizzas</button>
 <button onclick="scrollToSection('alitas')">Alitas</button>
 <button onclick="scrollToSection('papas')">Papas</button>
-
 </div>
 
 </header>
@@ -198,75 +285,201 @@ transform:translateX(-50%) translateY(-10px);
 <div class="promos-slider">
 
 <div class="promo-card">
-
 <div class="promo-label">💥 MOSTRADOR</div>
-
 <img src="peperoni-jamon.png">
-
 <div class="promo-info">
 Pizza grande $159<br>
 Pepperoni o Jamón
 </div>
-
 </div>
 
-
 <div class="promo-card">
-
 <div class="promo-label">🔥 PROMO DEL DÍA</div>
-
 <img id="promoDiaImg" src="promo-lunes.png">
-
 <div class="promo-info">
-
 <div id="promoTitulo"></div>
-
 <div id="promoTexto"></div>
-
 <div class="promo-urgencia" id="promoHorario"></div>
-
 </div>
-
 </div>
-
 
 <div class="promo-card">
-
 <div class="promo-label green">💰 MEJOR PRECIO</div>
-
 <img src="combo-familiar.png">
-
 <div class="promo-info">
 Combo Familiar<br>
 Pizza 45cm + 10 alitas + papas
 </div>
-
 </div>
 
-
 <div class="promo-card">
-
 <div class="promo-label red">🔥 MÁS PEDIDO</div>
-
 <img src="img_1631.png">
-
 <div class="promo-info">
 🍕 HAWAIANA
 </div>
+</div>
 
+</div>
+</div>
+
+
+<div class="container">
+
+<h2 id="pizzas">🍕 Pizzas</h2>
+
+<div class="menu-grid">
+
+<div class="card">
+<img src="img_1632.png">
+<div class="card-body">
+<h3>Pepperoni</h3>
+<div class="price">$179 | $199 | $229</div>
+<button onclick="add('Pepperoni 35cm',179)">35cm</button>
+<button onclick="add('Pepperoni 40cm',199)">40cm</button>
+<button onclick="add('Pepperoni 45cm',229)">45cm</button>
+</div>
+</div>
+
+<div class="card">
+<img src="img_1633.png">
+<div class="card-body">
+<h3>Mexicana</h3>
+<div class="price">$189 | $209 | $239</div>
+<button onclick="add('Mexicana 35cm',189)">35cm</button>
+<button onclick="add('Mexicana 40cm',209)">40cm</button>
+<button onclick="add('Mexicana 45cm',239)">45cm</button>
+</div>
 </div>
 
 </div>
 
 </div>
+
+
+<div class="cart-toggle" id="cartToggle" onclick="toggleCart()">
+🛒 Ver carrito (0)
+</div>
+
+<div class="cart" id="cart">
+
+<div class="cart-items" id="cartItems"></div>
+<div class="total" id="total">Total $0</div>
+
+<button class="whatsapp-btn" onclick="pedido()">
+Enviar pedido por WhatsApp
+</button>
+
+<button class="pay-btn" onclick="pagar()">
+Pagar con tarjeta
+</button>
+
+</div>
+
 
 <div id="toast">✔ Producto agregado</div>
 
+
 <script>
+
+let cart=[]
+let total=0
+let codigo="SP-"+Math.floor(1000+Math.random()*9000)
 
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:"smooth"})
 }
+
+function mostrarToast(){
+let toast=document.getElementById("toast")
+toast.classList.add("show")
+setTimeout(()=>{toast.classList.remove("show")},1200)
+}
+
+function add(producto,precio){
+
+cart.push({producto,precio})
+total+=precio
+
+renderCart()
+mostrarToast()
+
+}
+
+function removeItem(index){
+
+total-=cart[index].precio
+cart.splice(index,1)
+
+renderCart()
+
+}
+
+function renderCart(){
+
+let html=""
+
+cart.forEach((item,index)=>{
+
+html+=`
+<div class="cart-item">
+<div>
+<b>${item.producto}</b><br>
+$${item.precio}
+</div>
+<button class="remove" onclick="removeItem(${index})">×</button>
+</div>
+`
+
+})
+
+document.getElementById("cartItems").innerHTML=html
+document.getElementById("total").innerHTML="Total $"+total
+
+let boton=document.getElementById("cartToggle")
+
+if(cart.length>0){
+boton.style.display="block"
+boton.innerHTML="🛒 Ver carrito ("+cart.length+")"
+}
+
+}
+
+function toggleCart(){
+
+let cartBox=document.getElementById("cart")
+
+if(cartBox.style.display=="block"){
+cartBox.style.display="none"
+}else{
+cartBox.style.display="block"
+}
+
+}
+
+function pedido(){
+
+let mensaje="Pedido Santy's Pizzería%0A"
+
+cart.forEach(item=>{
+mensaje+=item.producto+" - $"+item.precio+"%0A"
+})
+
+mensaje+="%0ATotal: $"+total
+
+window.open("https://wa.me/526693123366?text="+mensaje)
+
+}
+
+function pagar(){
+
+alert("Código de pedido: "+codigo)
+
+window.open("https://link.mercadopago.com.mx/santyspizzeria")
+
+}
+
+/* PROMO DEL DIA */
 
 function promoDelDia(){
 
