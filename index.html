@@ -92,16 +92,17 @@ margin:4px;
 }
 
 .promo{
-padding:20px;
-margin:20px;
+padding:10px 20px 30px 20px;
+margin:0;
 }
 
 .promos-slider{
 display:flex;
 gap:18px;
 overflow-x:auto;
-padding:10px;
+padding:10px 20px;
 scroll-snap-type:x mandatory;
+scroll-behavior:smooth;
 }
 
 .promos-slider::-webkit-scrollbar{
@@ -110,13 +111,12 @@ display:none;
 
 .promo-card{
 position:relative;
-min-width:260px;
-max-width:260px;
+min-width:280px;
 background:white;
-border-radius:18px;
+border-radius:22px;
 overflow:hidden;
-box-shadow:0 10px 22px rgba(0,0,0,0.18);
-scroll-snap-align:start;
+box-shadow:0 14px 30px rgba(0,0,0,0.18);
+scroll-snap-align:center;
 }
 
 .promo-card img{
@@ -126,11 +126,11 @@ object-fit:cover;
 }
 
 .promo-info{
-padding:16px;
+padding:20px;
 font-weight:bold;
 text-align:center;
-font-size:16px;
-line-height:1.4;
+font-size:18px;
+line-height:1.5;
 }
 
 .promo-label{
@@ -145,13 +145,8 @@ font-size:13px;
 font-weight:bold;
 }
 
-.promo-label.green{
-background:#27ae60;
-}
-
-.promo-label.red{
-background:#e74c3c;
-}
+.promo-label.green{background:#27ae60;}
+.promo-label.red{background:#e74c3c;}
 
 .promo-urgencia{
 font-size:13px;
@@ -302,7 +297,7 @@ Pepperoni o Jamón
 <div class="promo-info">
 <div id="promoTitulo"></div>
 <div id="promoTexto"></div>
-<div class="promo-urgencia">⏰ Disponible de 10:00 AM a 4:00 PM</div>
+<div class="promo-urgencia" id="promoHorario"></div>
 </div>
 </div>
 
@@ -330,18 +325,8 @@ Pizza 45cm + 10 alitas + papas
 
 <script>
 
-let cart=[]
-let total=0
-let codigo="SP-"+Math.floor(1000+Math.random()*9000)
-
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:"smooth"})
-}
-
-function mostrarToast(){
-let toast=document.getElementById("toast")
-toast.classList.add("show")
-setTimeout(()=>{toast.classList.remove("show")},1200)
 }
 
 function promoDelDia(){
@@ -354,6 +339,7 @@ let minuto=ahora.getMinutes()
 let titulo=document.getElementById("promoTitulo")
 let texto=document.getElementById("promoTexto")
 let imagen=document.getElementById("promoDiaImg")
+let horario=document.getElementById("promoHorario")
 
 let inicio=10
 let fin=16
@@ -400,25 +386,18 @@ texto.innerHTML="Pizza 45cm + Alitas + Papas $399"
 imagen.src="promo-domingo.png"
 }
 
-let aviso=document.createElement("div")
-aviso.style.marginTop="6px"
-aviso.style.fontSize="13px"
-aviso.style.color="#ff7a00"
-
 if(hora>=inicio && hora<fin){
 
 let horasRestantes=fin-hora-1
 let minutosRestantes=59-minuto
 
-aviso.innerHTML="🔥 Solo hoy • termina en "+horasRestantes+"h "+minutosRestantes+"m"
+horario.innerHTML="🔥 Solo hoy • termina en "+horasRestantes+"h "+minutosRestantes+"m"
 
 }else{
 
-aviso.innerHTML="⏰ Disponible de 10:00 AM a 4:00 PM"
+horario.innerHTML="⏰ Disponible de 10:00 AM a 4:00 PM"
 
 }
-
-texto.innerHTML += aviso.outerHTML
 
 }
 
