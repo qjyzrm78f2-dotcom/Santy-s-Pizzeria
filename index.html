@@ -260,6 +260,53 @@ background:#27ae60;
 background:#e74c3c;
 }
 
+.promos{
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.promo-card{
+position:relative;
+background:white;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.promo-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.promo-info{
+padding:14px;
+font-weight:bold;
+text-align:center;
+}
+
+.promo-label{
+position:absolute;
+top:10px;
+left:10px;
+background:#ff7a00;
+color:white;
+padding:6px 12px;
+border-radius:8px;
+font-size:13px;
+font-weight:bold;
+}
+
+.promo-label.green{
+background:#27ae60;
+}
+
+.promo-label.red{
+background:#e74c3c;
+}
+
 </style>
 </head>
 
@@ -282,26 +329,65 @@ background:#e74c3c;
 
 <div class="promos-slider">
 
-<div class="destacado promo-mostrador">
-💥 PROMOCIÓN MOSTRADOR<br>
+<div class="promo-card">
+
+<div class="promo-label">
+💥 MOSTRADOR
+</div>
+
+<img src="promo-mostrador.jpg">
+
+<div class="promo-info">
 Pizza grande $159<br>
 Pepperoni o Jamón
 </div>
 
-<div class="destacado promo-dia">
+</div>
+
+<div class="promo-card">
+
+<div class="promo-label">
+🔥 PROMO DEL DÍA
+</div>
+
+<img src="promo-dia.jpg">
+
+<div class="promo-info">
 <div id="promoTitulo"></div>
 <div id="promoTexto"></div>
 </div>
 
-<div class="destacado mejor-precio">
-💰 MEJOR PRECIO<br>
+</div>
+
+<div class="promo-card">
+
+<div class="promo-label green">
+💰 MEJOR PRECIO
+</div>
+
+<img src="combo-familiar.jpg">
+
+<div class="promo-info">
 Combo Familiar<br>
 Pizza 45cm + 10 alitas + papas
 </div>
 
-<div class="destacado mas-pedido">
-🔥 MÁS PEDIDO<br>
-Pepperoni
+</div>
+
+<div class="promo-card">
+
+<div class="promo-label red">
+🔥 MÁS PEDIDO
+</div>
+
+<img src="img_1631.jpg">
+
+<div class="promo-info">
+🍕HAWAIANA 
+</div>
+
+</div>
+
 </div>
 
 </div>
