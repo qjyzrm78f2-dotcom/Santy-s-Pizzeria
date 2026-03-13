@@ -298,15 +298,11 @@ Pepperoni o Jamón
 
 <div class="promo-card">
 <div class="promo-label">🔥 PROMO DEL DÍA</div>
-
 <img id="promoDiaImg" src="promo-lunes.png">
-
 <div class="promo-info">
 <div id="promoTitulo"></div>
 <div id="promoTexto"></div>
-<div class="promo-urgencia">
-⏰ Disponible de 10:00 AM a 4:00 PM
-</div>
+<div class="promo-urgencia">⏰ Disponible de 10:00 AM a 4:00 PM</div>
 </div>
 </div>
 
@@ -330,91 +326,103 @@ Pizza 45cm + 10 alitas + papas
 </div>
 </div>
 
-<div class="container">
-
-<h2>Tipo de pedido</h2>
-
-<select id="tipoPedido" onchange="cambiarTipoPedido()">
-<option value="domicilio">Entrega a domicilio</option>
-<option value="tienda">Recoger en tienda</option>
-</select>
-
-<h2>Datos del cliente</h2>
-
-<input id="nombre" placeholder="Nombre">
-<input id="telefono" placeholder="Teléfono">
-
-<div id="direccionCampos">
-<input id="direccion" placeholder="Dirección">
-<input id="calles" placeholder="Entre calles">
-<input id="referencia" placeholder="Referencia">
-</div>
-
-<h2 id="pizzas">🍕 Pizzas</h2>
-
-<div class="menu-grid">
-
-<div class="card">
-<img src="img_1633.png">
-<div class="card-body">
-<h3>Mexicana</h3>
-<div class="price">$189 | $209 | $239</div>
-<button onclick="add('Mexicana 35cm',189)">35cm</button>
-<button onclick="add('Mexicana 40cm',209)">40cm</button>
-<button onclick="add('Mexicana 45cm',239)">45cm</button>
-</div>
-</div>
-
-<div class="card">
-<img src="img_1632.png">
-<div class="card-body">
-<h3>Pepperoni</h3>
-<div class="price">$179 | $199 | $229</div>
-<button onclick="add('Pepperoni 35cm',179)">35cm</button>
-<button onclick="add('Pepperoni 40cm',199)">40cm</button>
-<button onclick="add('Pepperoni 45cm',229)">45cm</button>
-</div>
-</div>
-
-</div>
-
-<h2 id="alitas">🍗 Alitas</h2>
-
-<div class="card">
-<img src="alitas.png">
-<div class="card-body">
-
-<select id="salsa">
-<option value="BBQ">BBQ</option>
-<option value="Red Hot">Red Hot</option>
-<option value="Búfalo">Búfalo</option>
-<option value="BBQ Picante">BBQ Picante</option>
-<option value="Mango Habanero">Mango Habanero</option>
-</select>
-
-<button onclick="agregarAlitas(6,99)">6 piezas $99</button>
-<button onclick="agregarAlitas(10,149)">10 piezas $149</button>
-
-</div>
-</div>
-
-<h2 id="papas">🥔 Papas Gajo</h2>
-
-<div class="card">
-<img src="papas.png">
-<div class="card-body">
-
-<button onclick="add('Papas gajo 220g',79)">220g $79</button>
-<button onclick="add('Papas gajo 400g',99)">400g $99</button>
-
-</div>
-</div>
-
-</div>
+<div id="toast">✔ Producto agregado</div>
 
 <script>
 
-/* TODO TU SCRIPT ORIGINAL SIGUE EXACTAMENTE IGUAL */
+let cart=[]
+let total=0
+let codigo="SP-"+Math.floor(1000+Math.random()*9000)
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"})
+}
+
+function mostrarToast(){
+let toast=document.getElementById("toast")
+toast.classList.add("show")
+setTimeout(()=>{toast.classList.remove("show")},1200)
+}
+
+function promoDelDia(){
+
+let ahora=new Date()
+let hoy=ahora.getDay()
+let hora=ahora.getHours()
+let minuto=ahora.getMinutes()
+
+let titulo=document.getElementById("promoTitulo")
+let texto=document.getElementById("promoTexto")
+let imagen=document.getElementById("promoDiaImg")
+
+let inicio=10
+let fin=16
+
+if(hoy==1){
+titulo.innerHTML="🔥 PROMO DEL LUNES"
+texto.innerHTML="Pizza + Papas $199"
+imagen.src="promo-lunes.png"
+}
+
+if(hoy==2){
+titulo.innerHTML="🔥 PROMO DEL MARTES"
+texto.innerHTML="Pizza + Alitas $219"
+imagen.src="promo-martes.png"
+}
+
+if(hoy==3){
+titulo.innerHTML="🔥 PROMO DEL MIÉRCOLES"
+texto.innerHTML="Pizza + Papas + Refresco $239"
+imagen.src="promo-miercoles.png"
+}
+
+if(hoy==4){
+titulo.innerHTML="🔥 PROMO DEL JUEVES"
+texto.innerHTML="Pizza 40cm $199"
+imagen.src="promo-jueves.png"
+}
+
+if(hoy==5){
+titulo.innerHTML="🔥 PROMO DEL VIERNES"
+texto.innerHTML="2 Pizzas Grandes x $299"
+imagen.src="promo-viernes.png"
+}
+
+if(hoy==6){
+titulo.innerHTML="🔥 PROMO DEL SÁBADO"
+texto.innerHTML="Pizza 40cm + 10 Alitas $349"
+imagen.src="promo-sabado.png"
+}
+
+if(hoy==0){
+titulo.innerHTML="🔥 PROMO DEL DOMINGO"
+texto.innerHTML="Pizza 45cm + Alitas + Papas $399"
+imagen.src="promo-domingo.png"
+}
+
+let aviso=document.createElement("div")
+aviso.style.marginTop="6px"
+aviso.style.fontSize="13px"
+aviso.style.color="#ff7a00"
+
+if(hora>=inicio && hora<fin){
+
+let horasRestantes=fin-hora-1
+let minutosRestantes=59-minuto
+
+aviso.innerHTML="🔥 Solo hoy • termina en "+horasRestantes+"h "+minutosRestantes+"m"
+
+}else{
+
+aviso.innerHTML="⏰ Disponible de 10:00 AM a 4:00 PM"
+
+}
+
+texto.innerHTML += aviso.outerHTML
+
+}
+
+promoDelDia()
 
 </script>
 
