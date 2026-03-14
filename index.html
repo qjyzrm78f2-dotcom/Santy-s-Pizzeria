@@ -587,11 +587,27 @@ window.open("https://wa.me/526693123366?text="+m)
 
 function pagar(){
 
-localStorage.setItem("pedido",JSON.stringify(cart))
-localStorage.setItem("total",total)
+if(cart.length==0){
 
-window.location.href="https://link.mercadopago.com.mx/santyspizzeria"
+alert("Agrega productos al carrito")
+return
 
+}
+
+let pedidoData = {
+
+productos: cart,
+total: total,
+codigo: codigo,
+fecha: new Date().toLocaleString()
+
+}
+
+localStorage.setItem("pedidoActual", JSON.stringify(pedidoData))
+
+window.location.href = "pago.html"
+
+}
 }
 
 function confirmarPago(){
