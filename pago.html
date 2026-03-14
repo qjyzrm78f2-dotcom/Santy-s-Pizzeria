@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pago - Santy's Pizzería</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+padding:40px;
+background:#f4e6d8;
+}
+
+button{
+
+background:#009ee3;
+color:white;
+border:none;
+padding:15px 25px;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Confirmar pago</h2>
+
+<div id="total"></div>
+
+<br>
+
+<button onclick="irAPagar()">
+Pagar con tarjeta
+</button>
+
+<script>
+
+let pedido = JSON.parse(localStorage.getItem("pedidoActual"))
+
+document.getElementById("total").innerHTML =
+"Total a pagar: $" + pedido.total
+
+function irAPagar(){
+
+window.location.href="https://link.mercadopago.com.mx/santyspizzeria"
+
+}
+
+</script>
+
+</body>
+</html>
