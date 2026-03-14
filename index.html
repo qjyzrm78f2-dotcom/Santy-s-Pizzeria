@@ -496,10 +496,17 @@ Pizza 45cm + 6 alitas + papas
 <div id="contadorCarrito"></div>
 <div class="total" id="total">Total $0</div>
 
-<button class="whatsapp-btn" onclick="pedido()">Enviar pedido</button>
-<button class="pay-btn" onclick="pagar()">Pagar con tarjeta</button>
-<button class="pay-btn" onclick="confirmarPago()">Confirmar pago</button>
+<button class="whatsapp-btn" onclick="pedidoEfectivo()">
+💵 Pagar en efectivo al recibir
+</button>
 
+<button class="pay-btn" onclick="pagarTarjeta()">
+💳 Pagar con tarjeta
+</button>
+
+<button class="pay-btn" onclick="transferencia()">
+📲 Pagar por transferencia
+</button>
 </div>
 
 <div id="toast">✔ Producto agregado</div>
@@ -705,10 +712,68 @@ setInterval(()=>{
 
 let s=document.getElementById("promoSlider")
 
+if(!s) return
+
 s.scrollBy({left:320,behavior:"smooth"})
 
 if(s.scrollLeft + s.clientWidth >= s.scrollWidth){
 s.scrollTo({left:0,behavior:"smooth"})
+}
+
+},4000)
+
+
+
+/* PAGO EFECTIVO */
+
+function pedidoEfectivo(){
+
+let mensaje="PEDIDO (PAGO EN EFECTIVO)%0A"
+mensaje+="Código: "+codigo+"%0A%0A"
+
+cart.forEach(item=>{
+mensaje+=item.producto+" - $"+item.precio+"%0A"
+})
+
+mensaje+="%0ATotal: $"+total
+
+window.open("https://wa.me/526693123366?text="+mensaje)
+
+}
+
+
+
+/* PAGO TARJETA */
+
+function pagarTarjeta(){
+
+localStorage.setItem("pedido",JSON.stringify(cart))
+localStorage.setItem("total",total)
+
+window.location.href="https://TU_LINK_STRIPE"
+
+}
+
+
+
+/* PAGO TRANSFERENCIA */
+
+function transferencia(){
+
+let mensaje="PEDIDO (PAGO POR TRANSFERENCIA)%0A"
+mensaje+="Código: "+codigo+"%0A%0A"
+
+cart.forEach(item=>{
+mensaje+=item.producto+" - $"+item.precio+"%0A"
+})
+
+mensaje+="%0ATotal: $"+total
+mensaje+="%0A%0AEnviar comprobante de transferencia."
+
+window.open("https://wa.me/526693123366?text="+mensaje)
+
+}
+
 }
 
 },4000)
