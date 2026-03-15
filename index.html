@@ -344,6 +344,83 @@ Pizza 45cm + 6 alitas + papas
 </div>
 </div>
 
+<div class="card">
+<img src="img_1631.png">
+<div class="card-body">
+<h3>Hawaiana</h3>
+<div class="price">$189 | $209 | $239</div>
+<button onclick="add('Hawaiana 35cm',189)">35cm</button>
+<button onclick="add('Hawaiana 40cm',209)">40cm</button>
+<button onclick="add('Hawaiana 45cm',239)">45cm</button>
+</div>
+</div>
+
+<div class="card">
+<img src="img_1633.png">
+<div class="card-body">
+<h3>Mexicana</h3>
+<div class="price">$189 | $209 | $239</div>
+<button onclick="add('Mexicana 35cm',189)">35cm</button>
+<button onclick="add('Mexicana 40cm',209)">40cm</button>
+<button onclick="add('Mexicana 45cm',239)">45cm</button>
+</div>
+</div>
+
+<div class="card">
+<img src="img_1630.png">
+<div class="card-body">
+<h3>3 Carnes</h3>
+<div class="price">$199 | $219 | $249</div>
+<button onclick="add('3 Carnes 35cm',199)">35cm</button>
+<button onclick="add('3 Carnes 40cm',219)">40cm</button>
+<button onclick="add('3 Carnes 45cm',249)">45cm</button>
+</div>
+</div>
+
+</div>
+
+<h2 id="alitas">🍗 Alitas</h2>
+
+<div class="card">
+
+<img src="alitas.png">
+
+<div class="card-body">
+
+<select id="salsa">
+
+<option value="BBQ">BBQ</option>
+<option value="Red Hot">Red Hot</option>
+<option value="Búfalo">Búfalo</option>
+<option value="BBQ Picante">BBQ Picante</option>
+<option value="Mango Habanero">Mango Habanero</option>
+
+</select>
+
+<button onclick="agregarAlitas(6,99)">6 piezas $99</button>
+
+<button onclick="agregarAlitas(10,149)">10 piezas $149</button>
+
+</div>
+
+</div>
+
+<h2 id="papas">🥔 Papas Gajo</h2>
+
+<div class="card">
+
+<img src="papas.png">
+
+<div class="card-body">
+
+<button onclick="add('Papas gajo 220g',79)">220g $79</button>
+
+<button onclick="add('Papas gajo 400g',99)">400g $99</button>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -476,6 +553,20 @@ function scrollToSection(id){
 document.getElementById(id).scrollIntoView({
 behavior:"smooth"
 })
+}
+
+function agregarAlitas(cantidad,precio){
+
+let salsa=document.getElementById("salsa").value
+
+let producto="Alitas "+cantidad+" piezas - Salsa "+salsa
+
+cart.push({producto,precio})
+total+=precio
+
+renderCart()
+mostrarToast()
+
 }
 
 
