@@ -404,12 +404,25 @@ document.getElementById("total").innerHTML="Total $"+total
 
 }
 
+let b=document.getElementById("cartToggle")
+
+if(cart.length>0){
+b.style.display="block"
+b.innerHTML="🛒 Ver carrito ("+cart.length+")"
+}else{
+b.style.display="none"
+}
+
 function removeItem(i){
 
 total-=cart[i].precio
 cart.splice(i,1)
 
 renderCart()
+
+if(cart.length==0){
+document.getElementById("cart").style.display="none"
+}
 
 }
 
@@ -436,15 +449,35 @@ function pagarTarjeta(){
 localStorage.setItem("pedido",JSON.stringify(cart))
 localStorage.setItem("total",total)
 
-https://buy.stripe.com/3cIbIUceW5HzgOl9AE2Ry00
+window.location.href="https://buy.stripe.com/3cIbIUceW5HzgOl9AE2Ry00"
 
 }
 
 function pedidoEfectivo(){
 
-alert("Pedido enviado por WhatsApp")
+if(cart.length==0){
+alert("Agrega productos al carrito")
+return
+}
+
+let mensaje="PEDIDO SANTY'S PIZZERÍA%0A%0A"
+
+cart.forEach(item=>{
+mensaje+=item.producto+" - $"+item.precio+"%0A"
+})
+
+mensaje+="%0ATotal: $"+total
+
+window.open("https://wa.me/526693123366?text="+mensaje)
 
 }
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({
+behavior:"smooth"
+})
+}
+
 
 </script>
 
